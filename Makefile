@@ -12,7 +12,7 @@ dcov_info:
 
 .PHONY: dcov_trace
 dcov_trace:
-	${CXX} ${CXX_FLAGS_COMMON} -lrt dcov_trace.cxx -o libdcov_trace.so
+	${CXX} ${CXX_FLAGS_COMMON} -lrt dcov_info.cxx dcov_trace.cxx -o libdcov_trace.so
 
 .PHONY: dcov_ins
 dcov_ins:
@@ -20,7 +20,7 @@ dcov_ins:
 
 .PHONY: probe
 probe:
-	${CXX} ${CXX_FLAGS_COMMON} -pthread -fopenmp -I./ -I/root/miniconda3/envs/tf2.11.0-ins/include/python3.9 dcov_info.cxx dcov_trace.cxx MurmurHash3.cxx probe.cxx -o probe.so
+	${CXX} ${CXX_FLAGS_COMMON} -pthread -fopenmp -I./ -I/root/miniconda3/envs/tf2.11.0-ins/include/python3.9 dcov_trace.cxx MurmurHash3.cxx probe.cxx -o probe.so
 
 .PHONY: install
 install:

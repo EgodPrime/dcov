@@ -2,7 +2,7 @@
 #include <Python.h>
 #include <algorithm>
 #include "pyptr.h"
-#include "dcov.h"
+#include "dcov_trace.h"
 #include "MurmurHash3.h"
 
 #ifndef PYPY_VERSION
