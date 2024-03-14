@@ -4,6 +4,8 @@ import os
 
 dcov_info = ctypes.CDLL('libdcov_info.so')
 probe = ctypes.CDLL(os.path.join(os.path.dirname(__file__), "probe.so"))
+sci = None
+file_matcher = None
 
 def get_dlf_src_path():
     import site
@@ -30,7 +32,7 @@ def insert_slipcover():
         d_miss_threshold=50,
         branch=False,
         skip_covered=True,
-        disassemble=False,
+        disassemble=False
     )
     # 在meta_path中添加一个模块加载器，这个加载器在加载模块时会进行字节码插桩
     sys.meta_path.insert(

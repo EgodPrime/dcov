@@ -4,17 +4,13 @@ from . import dcov
 
 if __name__ == "__main__":
     import os
-    import subprocess
+    import time
 
     root_dir = '/root/benchmark'
-    python_bins = {
-        'tf':'/root/miniconda3/envs/tf2.11.0-ins/bin/python',
-        'torch':'/root/miniconda3/envs/torch2.1.0-ins/bin/python',
-        'paddle':'/root/miniconda3/envs/paddle2.5-ins/bin/python',
-        'oneflow':'/root/miniconda3/envs/oneflow0.9.0-ins/bin/python',
-    }
 
-    dcov.init_bitmap_python()
+    dcov.init_bitmap()
+    # dcov.init_bitmap_python()
+    # dcov.init_bitmap_c()
 
     for dir_path, dirnames, _ in os.walk(root_dir):
         for dirname in dirnames:
@@ -27,8 +23,12 @@ if __name__ == "__main__":
                         file_path = os.path.join(dirpath, filename)
                         print(f'Executing: {file_path}')
                         # 执行找到的 Python 脚本
-                        try:
-                            subprocess.run([python_bins[dirname], file_path], check=True)
-                            print(dcov.get_bb_cnt_python())
-                        except subprocess.CalledProcessError as e:
-                            print(f"Error executing {file_path}: {e}")
+                        with open(file_path, 'r') as f:
+                            code = f.read()
+                            exec(code)
+                        s = time.time_ns()
+                        print(dcov.get_bb_cnts())
+                        e = time.time_ns()
+                        print(f"It takes {e-s} ns to get Python coverage and C coverage")
+                        # print(dcov.get_bb_cnt_python())
+                        # print(dcov.get_bb_cnt_c())
