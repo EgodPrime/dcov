@@ -6,6 +6,7 @@
 /* dcov_info.cxx
 begin
 */
+extern "C" int get_bitmap_size();
 // open and map the python bitmap
 extern "C" void open_bitmap_python();
 // open and map the c bitmap

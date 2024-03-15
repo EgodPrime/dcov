@@ -3,7 +3,6 @@ import sys
 import os
 
 dcov_info = ctypes.CDLL('libdcov_info.so')
-probe = ctypes.CDLL(os.path.join(os.path.dirname(__file__), "probe.so"))
 sci = None
 file_matcher = None
 

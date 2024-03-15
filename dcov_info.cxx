@@ -7,6 +7,10 @@
 
 #include "dcov.h"
 
+extern "C" int get_bitmap_size(){
+    return bitmap_size;
+}
+
 extern "C" void open_bitmap_python(){
     shmid_python = shmget(shm_key_python, bytemap_size, IPC_CREAT | 0666);
     m_data_python = (unsigned char*) shmat(shmid_python, NULL, 0);
@@ -56,6 +60,12 @@ unsigned int get_bb_cnt(unsigned char* m_data){
     unsigned int count = 0;
     #pragma omp parallel for reduction(+:count)
     for (size_t i = 0; i < bytemap_size; i++) {
+        // unsigned char c = m_data[i];
+        // unsigned char byte = 1;
+        // for(size_t j=0;j<8;j++){
+        //     if (c & byte) count ++;
+        //     byte = byte << 1;
+        // }
         unsigned char c = m_data[i];
         c = ( c & 0x55 ) + ( (c >> 1)  & 0x55 ) ;
         c = ( c & 0x33 ) + ( (c >> 2)  & 0x33 ) ;
