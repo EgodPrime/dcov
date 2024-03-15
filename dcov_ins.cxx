@@ -21,7 +21,7 @@
 
 int plugin_is_GPL_compatible;
 
-static struct plugin_info undercov_plugin_info = {
+static struct plugin_info dcov_plugin_info = {
   .version = "1.0",
   .help = "Track every bb execution",
 };
@@ -30,10 +30,10 @@ namespace
 {
   int bb_instrumented = 0;
 
-  const pass_data undercov_ins_pass_data = 
+  const pass_data dcov_ins_pass_data = 
   {
       GIMPLE_PASS,
-      "undercov",        /* name */
+      "dcov",        /* name */
       OPTGROUP_NONE,          /* optinfo_flags */
       TV_NONE,                /* tv_id */
       PROP_gimple_any,        /* properties_required */
@@ -54,10 +54,10 @@ namespace
     return hash % bitmap_size;
   }
 
-  struct undercov_ins_pass : gimple_opt_pass
+  struct dcov_ins_pass : gimple_opt_pass
   {
-    undercov_ins_pass(gcc::context *ctx)
-        : gimple_opt_pass(undercov_ins_pass_data, ctx)
+    dcov_ins_pass(gcc::context *ctx)
+        : gimple_opt_pass(dcov_ins_pass_data, ctx)
     {   
     }
 
@@ -93,11 +93,11 @@ namespace
         tree arg;
         FOR_ALL_BB_FN(bb, fun)
         {   
-            #ifdef DMC_DEBUG
+            #ifdef DCOV_DEBUG
             std::cerr<<"\tHandle basic block "<<bb->index<<"...\n";
             #endif
             if(bb->index<2) {
-                #ifdef DMC_DEBUG
+                #ifdef DCOV_DEBUG
                 std::cerr<<"\tSkip!\n";
                 #endif
                 continue;
@@ -106,14 +106,14 @@ namespace
             gsi = gsi_start_bb(bb);
             gimple* first_stmt = gsi_stmt(gsi);
             if(first_stmt==NULL){
-                #ifdef DMC_DEBUG
+                #ifdef DCOV_DEBUG
                 std::cerr<<"\tThe first statement is NULL...why?\n";
                 #endif
                 continue;
             } 
             auto stmt_type = gimple_code(first_stmt);
 
-            #ifdef DMC_DEBUG
+            #ifdef DCOV_DEBUG
             std::cerr<<"\tBefore any operations:\n";
             std::cerr<<"\tFirst statement type is "<<gimple_code_name[stmt_type]<<"\n";
             debug_bb(bb);
@@ -121,7 +121,7 @@ namespace
             #endif
 
             // skip exception handling edge
-            #ifdef DMC_DEBUG
+            #ifdef DCOV_DEBUG
             std::cerr<<"\Check if next to exception handling edge...\n";
             #endif
             bool is_exception_edge = false;
@@ -136,7 +136,7 @@ namespace
                 }
             }
             if (is_exception_edge){
-                #ifdef DMC_DEBUG
+                #ifdef DCOV_DEBUG
                 std::cerr<<"\tSkip exception handling edge.\n";
                 #endif
                 continue;
@@ -155,14 +155,14 @@ namespace
                     break;
             }
            
-            #ifdef DMC_DEBUG
+            #ifdef DCOV_DEBUG
             std::cerr<<"\tAfter insert:\n";
             debug_bb(bb);
             verify_flow_info();
             #endif
 
             bb_instrumented++;
-            #ifdef DMC_DEBUG
+            #ifdef DCOV_DEBUG
             std::cerr<<"\tInstruments with "<<hash_bb(fun, bb)<<"\n";
             #endif
         }
@@ -174,7 +174,7 @@ namespace
         return 0;
     }
 
-    virtual undercov_ins_pass* clone() override
+    virtual dcov_ins_pass* clone() override
     {
         // We do not clone ourselves
         return this;
@@ -188,7 +188,7 @@ namespace {
         std::cerr << "All things done!\n";
         std::cerr << "\033[32mTotally instruments \033[1;32m"<<bb_instrumented<<"\033[0;32m basic blocks\033[0m\n";
 
-        int fd = open("/tmp/undercov_cnt", O_CREAT|O_RDWR);
+        int fd = open("/tmp/dcov_cnt", O_CREAT|O_RDWR);
         if (fd == -1) {
             std::cerr << "Failed to open file" << std::endl;
         }
@@ -240,12 +240,12 @@ int plugin_init (struct plugin_name_args *plugin_info,
 
     register_callback(plugin_info->base_name,
             /* event */ PLUGIN_INFO,
-            /* callback */ NULL, /* user_data */ &undercov_plugin_info);
+            /* callback */ NULL, /* user_data */ &dcov_plugin_info);
 
     // Register the phase right after omplower
     struct register_pass_info pass_info;
 
-    pass_info.pass = new undercov_ins_pass(g);
+    pass_info.pass = new dcov_ins_pass(g);
     pass_info.reference_pass_name = "ssa";
     pass_info.ref_pass_instance_number = 1;
     pass_info.pos_op = PASS_POS_INSERT_BEFORE;
