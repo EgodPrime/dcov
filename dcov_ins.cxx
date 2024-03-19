@@ -185,8 +185,7 @@ namespace
 namespace {
     void finish_gcc(void *gcc_data, void *user_data)
     {
-        std::cerr << "All things done!\n";
-        std::cerr << "\033[32mTotally instruments \033[1;32m"<<bb_instrumented<<"\033[0;32m basic blocks\033[0m\n";
+        std::cerr << "\033[32mAll things done! Totally instruments \033[1;32m"<<bb_instrumented<<"\033[0;32m basic blocks\033[0m\n";
 
         int fd = open("/tmp/dcov_cnt", O_CREAT|O_RDWR);
         if (fd == -1) {

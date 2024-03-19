@@ -4,8 +4,8 @@ from importlib.abc import Loader, MetaPathFinder
 from pathlib import Path
 from typing import Any
 
-from . import bytecode as bc
-from .slipcover import VERSION, Slipcover
+import bytecode as bc
+from slipcover import VERSION, Slipcover
 
 
 class SlipcoverLoader(Loader):

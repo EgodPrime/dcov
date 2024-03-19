@@ -12,15 +12,16 @@ def get_dlf_src_path():
     import os
 
     dlf_prefix = site.getsitepackages()[-1]
-    command = f'ls {dlf_prefix} | grep -E "(tensorflow|torch|paddle|oneflow)"'
-    result = subprocess.run(command, shell=True, stdout=subprocess.PIPE)
-    output = result.stdout.decode('utf-8').split('\n')[0].strip()
-    path = os.path.join(dlf_prefix, output)
-    return path
+    dlf_libs = ["tensorflow", "torch", "paddle", "oneflow"]
+    for entry in os.listdir(dlf_prefix):
+        for lib in dlf_libs:
+            if lib in entry:
+                return os.path.join(dlf_prefix, entry)
+    return None
 
 def insert_slipcover():
-    from .slipcover import Slipcover
-    from .importer import FileMatcher, SlipcoverMetaPathFinder
+    from slipcover import Slipcover
+    from importer import FileMatcher, SlipcoverMetaPathFinder
     # file_matcher用于限定覆盖率的统计对象，比如只收集PyTorch的源码覆盖信息
     file_matcher = FileMatcher()
     lib_pkg_source = get_dlf_src_path()
