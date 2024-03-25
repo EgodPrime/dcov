@@ -19,6 +19,12 @@ extern "C" void init_bitmap_python();
 extern "C" void init_bitmap_c();
 // init the bitmaps of both python and c to all zeros
 extern "C" void init_bitmap();
+extern "C" void clear_bitmap_python();
+extern "C" void clear_bitmap_c();
+extern "C" void clear_bitmap();
+extern "C" void randomize_bitmap_python();
+extern "C" void randomize_bitmap_c();
+extern "C" void randomize_bitmap();
 // close the python bitmap
 extern "C" void close_bitmap_python();
 // close the c bitmap

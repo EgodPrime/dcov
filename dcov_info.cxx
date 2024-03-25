@@ -41,6 +41,38 @@ extern "C" void init_bitmap(){
     init_bitmap_c();
 }
 
+extern "C" void clear_bitmap_python(){
+    memset(m_data_python, 0, bytemap_size);
+}
+
+extern "C" void clear_bitmap_c(){
+    memset(m_data_c, 0, bytemap_size);
+}
+
+extern "C" void clear_bitmap(){
+    clear_bitmap_python();
+    clear_bitmap_c();
+}
+
+extern "C" void randomize_bitmap_python(){
+    for (size_t i = 0; i < bytemap_size; i++) {
+        m_data_python[i] = rand() % 256;
+    }
+}
+
+extern "C" void randomize_bitmap_c(){
+    for (size_t i = 0; i < bytemap_size; i++) {
+        m_data_c[i] = rand() % 256;
+    }
+}
+
+extern "C" void randomize_bitmap(){
+    for (size_t i = 0; i < bytemap_size; i++) {
+        m_data_python[i] = rand() % 256;
+        m_data_c[i] = rand() % 256;
+    }
+}
+
 extern "C" void close_bitmap_python(){
     shmdt(m_data_python);
     shmctl(shmid_python, IPC_RMID, NULL);
@@ -58,19 +90,23 @@ extern "C" void close_bitmap(){
 
 unsigned int get_bb_cnt(unsigned char* m_data){
     unsigned int count = 0;
-    #pragma omp parallel for reduction(+:count)
+    #ifndef NO_PARALLEL 
+        #pragma omp parallel for reduction(+:count)
+    #endif
     for (size_t i = 0; i < bytemap_size; i++) {
-        // unsigned char c = m_data[i];
-        // unsigned char byte = 1;
-        // for(size_t j=0;j<8;j++){
-        //     if (c & byte) count ++;
-        //     byte = byte << 1;
-        // }
         unsigned char c = m_data[i];
-        c = ( c & 0x55 ) + ( (c >> 1)  & 0x55 ) ;
-        c = ( c & 0x33 ) + ( (c >> 2)  & 0x33 ) ;
-        c = ( c & 0x0f ) + ( (c >> 4)  & 0x0f ) ;
-        count += c;
+        #ifdef NORMAL_BIT_COUNT
+            unsigned char byte = 1;
+            for(size_t j=0;j<8;j++){
+                if (c & byte) count ++;
+                byte = byte << 1;
+            }
+        #else
+            c = ( c & 0x55 ) + ( (c >> 1)  & 0x55 ) ;
+            c = ( c & 0x33 ) + ( (c >> 2)  & 0x33 ) ;
+            c = ( c & 0x0f ) + ( (c >> 4)  & 0x0f ) ;
+            count += c;
+        #endif
     }
     return count;
 }
