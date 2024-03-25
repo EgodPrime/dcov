@@ -7,8 +7,8 @@ import types
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Dict, List, Set
-import bytecode as bc
-import probe
+from . import bytecode as bc
+from . import probe
 
 VERSION = "0.3.2"
 
