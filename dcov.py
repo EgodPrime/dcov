@@ -61,6 +61,7 @@ close_bitmap_c=dcov_info.close_bitmap_c
 close_bitmap=dcov_info.close_bitmap
 get_bb_cnt_python=dcov_info.get_bb_cnt_python
 get_bb_cnt_c=dcov_info.get_bb_cnt_c
+open_bitmap=dcov_info.open_bitmap
 
 def get_bb_cnts():
     return get_bb_cnt_python(), get_bb_cnt_c()

@@ -2,3 +2,4 @@ __pycache__
 **/__pycache__
 .vscode
 *.so
+dcov_ins_server

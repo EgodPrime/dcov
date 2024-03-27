@@ -18,13 +18,37 @@
 
 #include <iostream>
 #include <string.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+#include <unistd.h>
 
 int plugin_is_GPL_compatible;
+
+static int shmid;
+static unsigned char* m_data;
+
+static bool __init__shm__ = [](){
+    shmid = shmget(4401, 4, IPC_CREAT | 0666);
+    m_data = (unsigned char*) shmat(shmid, NULL, 0);
+    return true;
+}();
 
 static struct plugin_info dcov_plugin_info = {
   .version = "1.0",
   .help = "Track every bb execution",
 };
+
+uint32_t get_bb_id(){
+    unsigned int id;
+    unsigned int new_id;
+    do
+    {
+        id = __atomic_load_4(m_data, __ATOMIC_SEQ_CST);
+        new_id = id + 1;
+    }
+    while (!__atomic_compare_exchange_4(m_data, &id, new_id, false, __ATOMIC_SEQ_CST, __ATOMIC_SEQ_CST));
+    return new_id;
+}
 
 namespace
 {
@@ -142,7 +166,8 @@ namespace
                 continue;
             } 
 
-            arg = build_int_cst(uint32_type_node, hash_bb(fun, bb));
+            // arg = build_int_cst(uint32_type_node, hash_bb(fun, bb));
+            arg = build_int_cst(uint32_type_node, get_bb_id());
             stmt = gimple_build_call(bb_decl, 1, arg);
             switch(stmt_type){
                 // case GIMPLE_LABEL:
@@ -187,43 +212,43 @@ namespace {
     {
         std::cerr << "\033[32mAll things done! Totally instruments \033[1;32m"<<bb_instrumented<<"\033[0;32m basic blocks\033[0m\n";
 
-        int fd = open("/tmp/dcov_cnt", O_CREAT|O_RDWR);
-        if (fd == -1) {
-            std::cerr << "Failed to open file" << std::endl;
-        }
+        // int fd = open("/tmp/dcov_cnt", O_CREAT|O_RDWR);
+        // if (fd == -1) {
+        //     std::cerr << "Failed to open file" << std::endl;
+        // }
 
-        /* Use the file lock to ensure the consistance in the concurrency cnodition*/
-        struct flock fl;
-        fl.l_type = F_WRLCK;
-        fl.l_whence = SEEK_SET;
-        fl.l_start = 0;
-        fl.l_len = 0;
-        fl.l_pid = getpid();
-        if (fcntl(fd, F_SETLKW, &fl) == -1) {
-            std::cerr << "Failed to acquire lock" << std::endl;
-        }
+        // /* Use the file lock to ensure the consistance in the concurrency cnodition*/
+        // struct flock fl;
+        // fl.l_type = F_WRLCK;
+        // fl.l_whence = SEEK_SET;
+        // fl.l_start = 0;
+        // fl.l_len = 0;
+        // fl.l_pid = getpid();
+        // if (fcntl(fd, F_SETLKW, &fl) == -1) {
+        //     std::cerr << "Failed to acquire lock" << std::endl;
+        // }
 
-        uint32_t bb_cnt;
-        char buf[4];
-        read(fd, buf, sizeof(bb_cnt));
-        memcpy(&bb_cnt,buf,sizeof(bb_cnt));
+        // uint32_t bb_cnt;
+        // char buf[4];
+        // read(fd, buf, sizeof(bb_cnt));
+        // memcpy(&bb_cnt,buf,sizeof(bb_cnt));
 
-        std::cerr << "Read previous bb cnt: " << bb_cnt << std::endl;
+        // std::cerr << "Read previous bb cnt: " << bb_cnt << std::endl;
 
-        bb_cnt += bb_instrumented;
+        // bb_cnt += bb_instrumented;
 
-        std::cerr << "Write new bb cnt: " << bb_cnt << std::endl;
+        // std::cerr << "Write new bb cnt: " << bb_cnt << std::endl;
 
-        fseek(fdopen(fd,"w+"),0, SEEK_SET);
-        memcpy(buf,&bb_cnt,sizeof(bb_cnt));
-        write(fd, buf, sizeof(bb_cnt));
+        // fseek(fdopen(fd,"w+"),0, SEEK_SET);
+        // memcpy(buf,&bb_cnt,sizeof(bb_cnt));
+        // write(fd, buf, sizeof(bb_cnt));
 
-        fl.l_type = F_UNLCK;
-        if (fcntl(fd, F_SETLKW, &fl) == -1) {
-            std::cerr << "Failed to release lock" << std::endl;
-        }
+        // fl.l_type = F_UNLCK;
+        // if (fcntl(fd, F_SETLKW, &fl) == -1) {
+        //     std::cerr << "Failed to release lock" << std::endl;
+        // }
 
-        close(fd);
+        // close(fd);
 
     }
 }

@@ -21,7 +21,7 @@ ifeq ($(NORMAL_BIT_COUNT), 1)
   CXX_FLAGS_COMMON+= -DNORMAL_BIT_COUNT
 endif
 
-all: dcov_ins dcov_trace dcov_info probe
+all: dcov_ins dcov_ins_server dcov_trace dcov_info probe
 
 .PHONY: dcov_info
 dcov_info:
@@ -35,6 +35,10 @@ dcov_trace:
 dcov_ins:
 	${CXX} ${CXX_FLAGS_COMMON} -fno-rtti -Wno-literal-suffix -I${GCC_PLUGIN_HEADERS} MurmurHash3.cxx dcov_ins.cxx -o libdcov_ins.so
 
+.PHONY: dcov_ins_server
+dcov_ins_server:
+	${CXX} -std=c++17 -O3 -g -lrt dcov_ins_server.cxx -o dcov_ins_server
+
 .PHONY: probe
 probe:
 	${CXX} ${CXX_FLAGS_COMMON} -pthread -fopenmp -I./ -I/home/dcov/miniconda3/envs/tf2.11.0-ins/include/python3.9 dcov_trace.cxx MurmurHash3.cxx probe.cxx -o probe.so
@@ -45,7 +49,7 @@ install:
 
 .PHONY: clean
 clean:
-	rm -f libdcov*.so probe.so
+	rm -f libdcov*.so probe.so dcov_ins_server
 
 .PHONY: uninstall
 uninstall:
