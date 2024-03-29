@@ -33,22 +33,20 @@ static bool __init__shm__ = [](){
     return true;
 }();
 
+uint32_t get_bb_id(){
+    unsigned int id;
+    do
+    {
+        id = __atomic_load_4(m_data, __ATOMIC_SEQ_CST);
+    }
+    while (!__atomic_compare_exchange_4(m_data, &id, id+1, false, __ATOMIC_SEQ_CST, __ATOMIC_SEQ_CST));
+    return id;
+}
+
 static struct plugin_info dcov_plugin_info = {
   .version = "1.0",
   .help = "Track every bb execution",
 };
-
-uint32_t get_bb_id(){
-    unsigned int id;
-    unsigned int new_id;
-    do
-    {
-        id = __atomic_load_4(m_data, __ATOMIC_SEQ_CST);
-        new_id = id + 1;
-    }
-    while (!__atomic_compare_exchange_4(m_data, &id, new_id, false, __ATOMIC_SEQ_CST, __ATOMIC_SEQ_CST));
-    return new_id;
-}
 
 namespace
 {
@@ -191,10 +189,10 @@ namespace
             std::cerr<<"\tInstruments with "<<hash_bb(fun, bb)<<"\n";
             #endif
         }
-        std::cerr << "\033[36m[EXIT] "
-            << function_name(fun) << " at "
-            << (LOCATION_FILE(fun->function_end_locus) ? : "<unknown>") << ":" << LOCATION_LINE(fun->function_end_locus)<<"\n";
-        std::cerr<<"\033[0m";
+        // std::cerr << "\033[36m[EXIT] "
+        //     << function_name(fun) << " at "
+        //     << (LOCATION_FILE(fun->function_end_locus) ? : "<unknown>") << ":" << LOCATION_LINE(fun->function_end_locus)<<"\n";
+        // std::cerr<<"\033[0m";
         // Nothing special todo
         return 0;
     }
