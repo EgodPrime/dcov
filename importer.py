@@ -4,14 +4,13 @@ from importlib.abc import Loader, MetaPathFinder
 from pathlib import Path
 from typing import Any
 
-from . import bytecode as bc
-from .slipcover import VERSION, Slipcover
+from .slipcover import Slipcover
 
 
 class SlipcoverLoader(Loader):
     def __init__(self, sci: Slipcover, orig_loader: Loader, origin: str):
         self.sci = sci  # Slipcover object measuring coverage
-        self.orig_loader = orig_loader  # original loader we're wrapping
+        self.orig_loader: Loader = orig_loader  # original loader we're wrapping
         self.origin = Path(origin)  # module origin (source file for a source loader)
 
         # loadlib checks for this attribute to see if we support it... keep in sync with orig_loader
@@ -141,7 +140,7 @@ class ImportManager:
     """A context manager that enables instrumentation while active."""
 
     def __init__(
-        self, sci: Slipcover, file_matcher: FileMatcher = None, debug: bool = False
+            self, sci: Slipcover, file_matcher: FileMatcher = None, debug: bool = False
     ):
         self.mpf = SlipcoverMetaPathFinder(
             sci, file_matcher if file_matcher else MatchEverything(), debug
