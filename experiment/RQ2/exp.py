@@ -1,13 +1,15 @@
-from os.path import join, abspath
+from os.path import join, abspath, dirname
 import time
 import os
 import argparse
 import sys
-sys.path.append('../../..')
+cur_dir = dirname(abspath(__file__))
+dcov_par = dirname(dirname(dirname(cur_dir)))
+sys.path.append(dcov_par)
 from dcov import dcov
 
 repeat = 100
-data_dir_prefix = abspath('../benchmark')
+data_dir_prefix = join(dirname(cur_dir),'benchmark')
 
 def get_dlf_src_path():
     import site
@@ -124,28 +126,28 @@ def conduct_exp(libname:str, mode, predo, execution, analysis):
     with open("results.txt", 'a+') as f:
         f.write(f"{libname},{mode},{time_ET},{time_AT},{time_TT}\n")
 
-def conduct_base(libname:str):
-    conduct_exp(libname, 'base', predo_base, execution_base, analysis_base)
+def conduct_base(libname:str, mode):
+    conduct_exp(libname, mode, predo_base, execution_base, analysis_base)
 
-def conduct_coverage_py(libname:str):
-    conduct_exp(libname, 'coverage.py', predo_coverage_py, execution_coverage_py, analysis_coverage_py)
+def conduct_coverage_py(libname:str, mode):
+    conduct_exp(libname, mode, predo_coverage_py, execution_coverage_py, analysis_coverage_py)
 
-def conduct_slipcover(libname:str):
-    conduct_exp(libname, "slipcover", predo_slipcover, execution_base, analysis_slipcover)
+def conduct_slipcover(libname:str, mode):
+    conduct_exp(libname, mode, predo_slipcover, execution_base, analysis_slipcover)
 
-def conduct_dcov_python(libname:str):
-    conduct_exp(libname, "dcov_python", predo_dcov_python, execution_base, analysis_dcov_python)
+def conduct_dcov_python(libname:str, mode):
+    conduct_exp(libname, mode, predo_dcov_python, execution_base, analysis_dcov_python)
         
-def conduct_dcov_c(libname:str):
-    conduct_exp(libname, "dcov_c", predo_dcov_C, execution_base, analysis_dcov_C)
+def conduct_dcov_c(libname:str, mode):
+    conduct_exp(libname, mode, predo_dcov_C, execution_base, analysis_dcov_C)
         
-def conduct_dcov(libname:str):
-    conduct_exp(libname, "dcov", predo_dcov, execution_base, analysis_dcov)
+def conduct_dcov(libname:str, mode):
+    conduct_exp(libname, mode, predo_dcov, execution_base, analysis_dcov)
         
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--libname', type=str, required=True, choices=['tensorflow','torch','paddle'])
-    parser.add_argument('--mode', type=str, required=True, choices=['base', 'coverage.py', 'slipcover', 'dcov-python', 'dcov-c', 'dcov'])
+    parser.add_argument('--mode', type=str, required=True, choices=['base', 'coverage.py', 'slipcover', 'dcov-python', 'dcov-c', 'dcov', 'gcov'])
     args = parser.parse_args()
     libname = args.libname
     mode = args.mode
@@ -153,15 +155,15 @@ if __name__ == '__main__':
     if libname=='tensorflow':
         os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
         
-    if mode == 'base':
-        conduct_base(libname)
+    if mode == 'base' or mode=='gcov':
+        conduct_base(libname, mode)
     elif mode == 'coverage.py':
-        conduct_coverage_py(libname)
+        conduct_coverage_py(libname, mode)
     elif mode == 'slipcover':
-        conduct_slipcover(libname)
+        conduct_slipcover(libname, mode)
     elif mode == 'dcov-python':
-        conduct_dcov_python(libname)
+        conduct_dcov_python(libname, mode)
     elif mode == 'dcov-c':
-        conduct_dcov_c(libname)
+        conduct_dcov_c(libname, mode)
     elif mode == 'dcov':
-        conduct_dcov(libname)
+        conduct_dcov(libname, mode)

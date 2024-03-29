@@ -6,6 +6,7 @@ conda run -n tf2.11.0      python exp.py --libname tensorflow --mode slipcover
 conda run -n tf2.11.0      python exp.py --libname tensorflow --mode dcov-python
 conda run -n tf2.11.0-ins  python exp.py --libname tensorflow --mode dcov-c
 conda run -n tf2.11.0-ins  python exp.py --libname tensorflow --mode dcov
+conda run -n tf2.11.0-gcov python exp.py --libname tensorflow --mode gcov
 conda run -n pt2.1.0       python exp.py --libname torch      --mode base
 conda run -n pt2.1.0       python exp.py --libname torch      --mode coverage.py
 conda run -n pt2.1.0       python exp.py --libname torch      --mode slipcover
