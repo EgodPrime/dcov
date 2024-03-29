@@ -1,6 +1,5 @@
 #ifndef _DCOV_TRACE_H_
 #define _DCOV_TRACE_H_
-#include "dcov.h"
 /* dcov_trace.cxx
 begin
 */

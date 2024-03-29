@@ -2,6 +2,7 @@
 #include <Python.h>
 #include <algorithm>
 #include "pyptr.h"
+#include "dcov.h"
 #include "dcov_trace.h"
 #include "MurmurHash3.h"
 
@@ -46,7 +47,7 @@ public:
             const char* filename_c = PyUnicode_AsUTF8(filename);
             unsigned int lineno = PyLong_AsLong(lineno_or_branch);
             line_idx = hash_line(filename_c, lineno);
-        }
+                    }
 
 
     static PyObject*

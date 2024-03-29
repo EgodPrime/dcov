@@ -2,7 +2,7 @@
 #include <sys/shm.h>
 #include <unistd.h>
 #include <stdio.h>
-
+#include "dcov.h"
 #include "dcov_trace.h"
 
 // 一种C语言特有的小把戏，可以使得下面这个函数在库文件被加载时自动运行

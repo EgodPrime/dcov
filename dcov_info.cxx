@@ -3,9 +3,10 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
-#include <stdio.h>
-
+#include <iostream>
 #include "dcov.h"
+#include "dcov_info.h"
+using namespace std;
 
 extern "C" int get_bitmap_size(){
     return bitmap_size;

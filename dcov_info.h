@@ -1,8 +1,6 @@
 #ifndef _DCOV_INFO_H_
 #define _DCOV_INFO_H_
 
-#include "dcov_info.h"
-
 /* dcov_info.cxx
 begin
 */
