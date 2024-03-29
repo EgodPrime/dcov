@@ -1,5 +1,13 @@
 __pycache__
 **/__pycache__
-.vscode
+**/.vscode
+**/.vscode/**
+**/.fleet
+**/.fleet/**
 *.so
 dcov_ins_server
+experiment/RQ*/*.txt
+experiment/RQ*/*.png
+**/bazel-out
+**/**.coverage
+**/FreeFuzz
