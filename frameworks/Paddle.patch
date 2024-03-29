@@ -1,0 +1,12 @@
+--- Paddle/CMakeLists.txt	2024-03-22 12:23:22.585161337 +0800
++++ Paddle-ins/CMakeLists.txt	2024-03-22 14:06:26.295441909 +0800
+@@ -40,6 +40,9 @@
+         FORCE)
+ endif()
+ 
++set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fplugin=libdcov_ins.so -lrt -ldcov_trace")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fplugin=libdcov_ins.so -lrt -ldcov_trace")
++set(CMAKE_LINKER_FLAGS "${CMAKE_LINKER_FLAGS} -lrt -ldcov_trace")
+ project(paddle CXX C)
+ 
+ # enable language CUDA
