@@ -52,7 +52,7 @@ probe:
 
 .PHONY: install
 install:
-	sudo cp libdcov*.so /usr/lib
+	cp libdcov*.so /usr/lib
 
 .PHONY: clean
 clean:
@@ -60,4 +60,4 @@ clean:
 
 .PHONY: uninstall
 uninstall:
-	sudo rm /usr/lib/libdcov*.so
+	rm /usr/lib/libdcov*.so
