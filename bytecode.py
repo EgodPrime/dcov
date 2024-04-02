@@ -206,9 +206,15 @@ def write_varint_be(n, mark_first=None):
 def read_varint_be(it):
     """Decodes a (big endian) variable length unsigned integer from 'it'"""
     value = 0
-    while (b := next(it)) & 0x40:
-        value |= b & 0x3F
-        value <<= 6
+    # while (b := next(it)) & 0x40:
+    #     value |= b & 0x3F
+    #     value <<= 6
+    while True:  
+        b = next(it)  
+        if b & 0x40 == 0:  
+            break
+        value |= b & 0x3F  
+        value <<= 6  
     value |= b & 0x3F
 
     return value

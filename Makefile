@@ -1,8 +1,11 @@
-GCC_PLUGIN_DIR=/home/dcov/gcc_9.4.0_install
-CC=${GCC_PLUGIN_DIR}/bin/gcc
-CXX=${GCC_PLUGIN_DIR}/bin/g++
-GCC_PLUGIN_HEADERS=${GCC_PLUGIN_DIR}/lib/gcc/x86_64-pc-linux-gnu/9.4.0/plugin/include
-CXX_FLAGS_COMMON=-std=c++17 -O3 -fPIC -shared
+GCC_DIR=gcc_install
+CC=${GCC_DIR}/bin/gcc
+CXX=${GCC_DIR}/bin/g++
+GCC_PLUGIN_HEADERS=${GCC_DIR}/lib/gcc/x86_64-pc-linux-gnu/9.4.0/plugin/include
+CXX_FLAGS_COMMON=-std=c++17 -g -fPIC -shared
+PYTHON_ENV_DIR=$(shell dirname $(shell dirname $(shell which python)))
+PYTHON_VERSION=$(shell ls ${PYTHON_ENV_DIR}/include -l | grep python3 | awk '{print $$NF}') 
+PYTHON_INCLUDE_DIR=${PYTHON_ENV_DIR}/include/${PYTHON_VERSION}
 
 BITMAP_SIZE=28
 ifeq ($(BITMAP_SIZE), 16)
@@ -22,6 +25,10 @@ ifeq ($(NORMAL_BIT_COUNT), 1)
 endif
 
 all: dcov_ins dcov_ins_server dcov_trace dcov_info probe
+	
+.PHONY: check
+check:
+	@echo "PYTHON_INCLUDE_DIR: ${PYTHON_INCLUDE_DIR}" 
 
 .PHONY: dcov_info
 dcov_info:
@@ -37,11 +44,11 @@ dcov_ins:
 
 .PHONY: dcov_ins_server
 dcov_ins_server:
-	${CXX} -std=c++17 -O3 -g -lrt dcov_ins_server.cxx -o dcov_ins_server
+	${CXX} -std=c++17 -O3 -lrt dcov_ins_server.cxx -o dcov_ins_server
 
 .PHONY: probe
 probe:
-	${CXX} ${CXX_FLAGS_COMMON} -pthread -fopenmp -I./ -I/home/dcov/miniconda3/envs/tf2.11.0-ins/include/python3.9 dcov_trace.cxx MurmurHash3.cxx probe.cxx -o probe.so
+	${CXX} ${CXX_FLAGS_COMMON} -pthread -fopenmp -I./ -I${PYTHON_INCLUDE_DIR} dcov_trace.cxx MurmurHash3.cxx probe.cxx -o probe.so
 
 .PHONY: install
 install:

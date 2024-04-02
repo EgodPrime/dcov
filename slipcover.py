@@ -255,7 +255,8 @@ class Slipcover:
         index = self.code2index[co]
 
         for offset, lineno in index:
-            if lineno in lines and (func := ed.get_inserted_function(offset)):
+            func = ed.get_inserted_function(offset)
+            if lineno in lines and func:
                 func_index, func_arg_index, *_ = func
                 if co_consts[func_index] == probe.signal:
                     probe.mark_removed(co_consts[func_arg_index])

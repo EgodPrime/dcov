@@ -19,7 +19,7 @@ And for convenience, I've defaulted to doing the following installation steps in
 
 ```bash
 bash download_gcc.sh
-bash compile_gcc.sh
+bash build_gcc.sh
 # add sudo if you are not the root user or not in docker container
 bash bind_gcc.sh
 ```
@@ -49,6 +49,7 @@ conda create -n py39 python=3.9
 
 ### Step III. Compile dcov from source & Installation
 ```bash
+apt install libgmp-dev
 cd dcov
 make
 # add sudo if you are not the root user or not in docker container

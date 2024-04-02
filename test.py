@@ -1,4 +1,4 @@
-import dcov
+from . import dcov
 
 
 

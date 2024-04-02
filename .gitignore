@@ -9,3 +9,6 @@
 **/*.coverage
 **/FreeFuzz
 **/all.info
+**/gcc-*
+**/gcc_*
+
