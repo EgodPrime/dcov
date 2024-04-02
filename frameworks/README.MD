@@ -8,28 +8,82 @@ The `prepare_xx.sh` creates a conda environment, downloads the source code and a
 The `compile_xx.sh` build DLF from source with instrumentation and install the generated .whl into the conda environment.
 
 ## TensorFlow
+
+### download source code
+```bash
+bash prepare_tensorflow.sh
+```
+
+### create python env
+```bash
+conda create -n tf2.11.0-ins python=3.9
+conda activate tf2.11.0-ins
+conda install bazel
+pip install numpy wheel packaging requests opt_einsum
+pip install keras_preprocessing --no-deps
+conda deactivate
+```
+
+### buld
 ```bash
 # in one terminal
 ../dcov_ins_server
 # in another terminal
-bash prepare_tensorflow.sh
+conda activate tf2.11.0-ins
 bash compile_tensorflow.sh
+conda deactivate
 ```
 
 ## PyTorch
+
+### download source code
+```bash
+bash prepare_pytorch.sh
+```
+
+### create python env
+```bash
+conda create -n pt2.1.0-ins python=3.9
+conda activate pt2.1.0-ins
+conda install cmake ninja pyyaml
+conda install intel::mkl-static intel::mkl-include
+pushd pytorch
+pip install -r requirements.txt
+popd
+conda deactivate
+```
+
+### build
 ```bash
 # in one terminal
 ../dcov_ins_server
 # in another terminal
-bash prepare_pytorch.sh
+conda activate pt2.1.0-ins
 bash compile_pytorch.sh
+conda deactivate
 ```
 
 ## PaddlePaddle
+
+### download source code
+```bash
+bash prepare_paddle.sh
+```
+
+### create python env
+```bash
+conda create -n pp2.6.1-ins python=3.9
+conda activate pp2.6.1-ins
+apt install -y swig wget patchelf unrar
+pip install numpy protobuf ninja cmake
+conda deactivate
+```
+
+### build
 ```bash
 # in one terminal
 ../dcov_ins_server
 # in another terminal
-bash prepare_paddle.sh
+conda activate pp2.6.1-ins
 bash compile_paddle.sh
 ```

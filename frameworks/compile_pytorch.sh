@@ -1,4 +1,3 @@
-conda activate pt2.1.0-ins
 mkdir -p dlf_whls_ins
 pushd pytorch
 export CMAKE_PREFIX_PATH=$(dirname $(dirname $(which python)))
