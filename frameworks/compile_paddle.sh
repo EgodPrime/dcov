@@ -1,4 +1,3 @@
-conda activate pp2.6.1-ins
 mkdir -p dlf_whls_ins
 pushd Paddle
 rm -rf build

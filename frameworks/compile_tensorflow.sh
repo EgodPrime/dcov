@@ -1,4 +1,3 @@
-conda activate tf2.11.0-ins
 mkdir -p dlf_whls_ins
 pushd tensorflow
 ./configure
