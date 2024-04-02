@@ -7,6 +7,11 @@ The `prepare_xx.sh` creates a conda environment, downloads the source code and a
 
 The `compile_xx.sh` build DLF from source with instrumentation and install the generated .whl into the conda environment.
 
+## Create a directory to store all .whl package
+```bash
+mkdir -p dlf_whls_ins
+```
+
 ## TensorFlow
 
 ### download source code
@@ -18,18 +23,20 @@ bash prepare_tensorflow.sh
 ```bash
 conda create -n tf2.11.0-ins python=3.9
 conda activate tf2.11.0-ins
-conda install bazel
+conda install bazel==5.4.1
 pip install numpy wheel packaging requests opt_einsum
 pip install keras_preprocessing --no-deps
 conda deactivate
 ```
 
-### buld
+### build
 ```bash
 # in one terminal
 ../dcov_ins_server
+
 # in another terminal
 conda activate tf2.11.0-ins
+# For the choices that appear in configure, type enter for all of them.
 bash compile_tensorflow.sh
 conda deactivate
 ```
@@ -86,4 +93,5 @@ conda deactivate
 # in another terminal
 conda activate pp2.6.1-ins
 bash compile_paddle.sh
+conda deactivate
 ```
