@@ -15,6 +15,8 @@ dcov_ins_server: offers atomic and increasing basic block id to libdcov_ins.so
 I strongly recommend you to do this in an independent docker container!
 And for convenience, I've defaulted to doing the following installation steps in a Docker container.
 
+First of all, install some dependencies by `apt install build-essential`
+
 ### Step I. Build GCC 9.4.0 from source
 
 ```bash
