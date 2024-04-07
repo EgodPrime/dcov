@@ -1,8 +1,13 @@
 FROM ubuntu:20.04
 
 WORKDIR /root
+
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git build-essential wget libgmp-dev
+    
+ENV DEBIAN_FRONTEND=dialog
 
 # conda环境安装
 RUN wget -c https://repo.anaconda.com/miniconda/Miniconda3-py39_24.1.2-0-Linux-x86_64.sh && \
