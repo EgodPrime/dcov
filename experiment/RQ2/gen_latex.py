@@ -18,11 +18,6 @@ DLF_MAP = {
     'paddle': "PaddlePaddle"
 }
 
-num_scripts = 100
-num_repeat = 100
-divider = num_scripts * num_repeat
-
-
 def gen():
     results_file_path = './results.txt'
     data = {}
@@ -43,7 +38,7 @@ def gen():
         datas = [data[dlf]['base'][-1]]
         for mode in ['coverage.py', 'slipcover', 'dcov-python', 'dcov-c', 'dcov']:
             datas += data[dlf][mode]
-        datas_t = [float(x) / divider for x in datas]
+        datas_t = [float(x) for x in datas]
         datas = [f"{x:.2f}" for x in datas_t]
         res += ' & '.join(datas)
         res += ' \\\\\n'

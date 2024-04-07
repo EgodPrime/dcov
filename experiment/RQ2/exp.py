@@ -8,6 +8,7 @@ dcov_par = dirname(dirname(dirname(cur_dir)))
 sys.path.append(dcov_par)
 from dcov import dcov
 
+num_ps = 100
 repeat = 100
 data_dir_prefix = join(dirname(cur_dir),'benchmark')
 
@@ -104,7 +105,7 @@ def conduct_exp(libname:str, mode, predo, execution, analysis):
     data_dir = join(data_dir_prefix, libname)
     time_ET = 0
     time_AT = 0
-    for idx in range(100):
+    for idx in range(num_ps):
         file_path = os.path.join(data_dir, f"experiment_{idx}.py")
         code = open(file_path, 'r', encoding='utf-8').read()
         print(f"Executing: {file_path}...")
@@ -120,9 +121,10 @@ def conduct_exp(libname:str, mode, predo, execution, analysis):
             print("something wrong!")
             continue
     time_TT = time_ET + time_AT
-    time_ET /= 1000000
-    time_AT /= 1000000
-    time_TT /= 1000000
+    unit_control = 1000000*num_ps*repeat
+    time_ET /= unit_control
+    time_AT /= unit_control
+    time_TT /= unit_control
     with open("results.txt", 'a+') as f:
         f.write(f"{libname},{mode},{time_ET},{time_AT},{time_TT}\n")
 
