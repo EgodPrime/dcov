@@ -7,11 +7,6 @@ The `prepare_xx.sh` creates a conda environment, downloads the source code and a
 
 The `compile_xx.sh` build DLF from source with instrumentation and install the generated .whl into the conda environment.
 
-## Create a directory to store all .whl package
-```bash
-mkdir -p dlf_whls_ins
-```
-
 ## TensorFlow
 
 ### download source code
@@ -33,7 +28,6 @@ conda deactivate
 ```bash
 # in one terminal
 ../dcov_ins_server
-
 # in another terminal
 conda activate tf2.11.0-ins
 # For the choices that appear in configure, type enter for all of them.
@@ -50,8 +44,8 @@ bash prepare_pytorch.sh
 
 ### create python env
 ```bash
-conda create -n pt2.1.0-ins python=3.9
-conda activate pt2.1.0-ins
+conda create -n pt2.2.0-ins python=3.9
+conda activate pt2.2.0-ins
 conda install cmake ninja pyyaml
 conda install intel::mkl-static intel::mkl-include
 pushd pytorch
@@ -65,7 +59,7 @@ conda deactivate
 # in one terminal
 ../dcov_ins_server
 # in another terminal
-conda activate pt2.1.0-ins
+conda activate pt2.2.0-ins
 bash compile_pytorch.sh
 conda deactivate
 ```
@@ -79,8 +73,8 @@ bash prepare_paddle.sh
 
 ### create python env
 ```bash
-conda create -n pp2.6.1-ins python=3.9
-conda activate pp2.6.1-ins
+conda create -n pp2.6.0-ins python=3.9
+conda activate pp2.6.0-ins
 apt install -y swig wget patchelf unrar
 pip install numpy protobuf ninja cmake
 conda deactivate
@@ -91,7 +85,7 @@ conda deactivate
 # in one terminal
 ../dcov_ins_server
 # in another terminal
-conda activate pp2.6.1-ins
+conda activate pp2.6.0-ins
 bash compile_paddle.sh
 conda deactivate
 ```
