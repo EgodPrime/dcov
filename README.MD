@@ -1,4 +1,4 @@
-# DCOV: Lightweight Code Coverage Analyzer For Deep Learning Framwork Fuzzing
+# DCOV: Lightweight Code Coverage Analyzer For Deep Learning Framework Testing
 
 Dcov contains 3 main shared libraries and 1 executable program:
 
@@ -10,55 +10,58 @@ libdcov_info.so: used to get the statistics of basic blocks, which is further in
 
 dcov_ins_server: offers atomic and increasing basic block id to libdcov_ins.so
 
-## Installation(Ubuntu 20.04)
+## Installation(Based on docker)
 
-I strongly recommend you to do this in an independent docker container!
-And for convenience, I've defaulted to doing the following installation steps in a Docker container.
-
-First of all, install some dependencies by `apt install build-essential`
-
-### Step I. Build GCC 9.4.0 from source
+### Step I. Build docker image and create a container
 
 ```bash
-bash download_gcc.sh
+docker build -t dcov:latest -f Dockerfile .
+docker run -itd --name dcov -v ${PWD}:/root dcov:latest
+docker exec -it dcov bash
+```
+
+### Step II. Build GCC 9.4.0 from source
+
+We use gcc 9.4.0 to compile dcov and DL frameworks
+
+```bash
+# download and extract
+wget -c https://mirrors.tuna.tsinghua.edu.cn/gnu/gcc/gcc-9.4.0/gcc-9.4.0.tar.gz
+tar -zxf gcc-9.4.0.tar.gz
+# build and install
 bash build_gcc.sh
-# add sudo if you are not the root user or not in docker container
-bash bind_gcc.sh
-```
-
-### Step II. Install miniconda
-
-You can use any python environment because all we need is just the header files.
-In this place I would like to use miniconda.
-
-```bash
-cd /root
-wget -c https://repo.anaconda.com/miniconda/Miniconda3-py39_23.1.0-1-Linux-x86_64.sh
-bash Miniconda3-py39_23.1.0-1-Linux-x86_64.sh
-# inputs follwing key
-# enter
-# q
-# yes
-# enter
-# yes
-rm Miniconda3-py39_23.1.0-1-Linux-x86_64.sh
-```
-
-After the installation of miniconda finished, you need to restart the terminal before you continue.
-```
-conda create -n py39 python=3.9
 ```
 
 ### Step III. Compile dcov from source & Installation
+
 ```bash
-apt install libgmp-dev
-cd dcov
+conda create -n py39 python=3.9
+conda actiavte py39
+pushd dcov
 make
 # add sudo if you are not the root user or not in docker container
 make install
+popd
 ```
 
-*If you have different python environment, you should edit the Makefile to make some adjustment.*
+## Compatibility
+We tested the following deep learning frameworks on their releases of the last two years (2022/4-2024/4). 
+
+|DLF|Version|Builder|Compatible|
+|---|---|---|---|
+|TensorFlow|v2.8.0-v2.9.0|bazel|X|
+|TensorFlow|v2.10.0|bazel|√|
+|TensorFlow|v2.11.0|bazel|√|
+|TensorFlow|v2.12.0-v2.16.0|bazel|X|
+|PyTorch|v2.0.0|cmake+make|X|
+|PyTorch|v2.1.0|cmake+make|√|
+|PyTorch|v2.2.0|cmake+make|√|
+|PaddlePaddle|v2.1.0|cmake+make|√|
+|PaddlePaddle|v2.2.0|cmake+make|X|
+|PaddlePaddle|v2.3.0|cmake+make|X|
+|PaddlePaddle|v2.4.0|cmake+ninja|√|
+|PaddlePaddle|v2.5.0|cmake+ninja|√|
+|PaddlePaddle|v2.6.0|cmake+ninja|√|
 
 ## How To Build Deep Learning Frameworks With DCOV
 See [here](frameworks/README.MD).

@@ -1,8 +1,8 @@
-GCC_DIR=gcc_install
+GCC_DIR=./gcc_install
 CC=${GCC_DIR}/bin/gcc
 CXX=${GCC_DIR}/bin/g++
 GCC_PLUGIN_HEADERS=${GCC_DIR}/lib/gcc/x86_64-pc-linux-gnu/9.4.0/plugin/include
-CXX_FLAGS_COMMON=-std=c++17 -g -fPIC -shared
+CXX_FLAGS_COMMON=-std=c++17 -O3 -fPIC -shared
 PYTHON_ENV_DIR=$(shell dirname $(shell dirname $(shell which python)))
 PYTHON_VERSION=$(shell ls ${PYTHON_ENV_DIR}/include -l | grep python3 | awk '{print $$NF}') 
 PYTHON_INCLUDE_DIR=${PYTHON_ENV_DIR}/include/${PYTHON_VERSION}

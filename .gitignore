@@ -12,3 +12,4 @@
 **/gcc-*
 **/gcc_*
 
+**/*.coverage
