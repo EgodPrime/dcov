@@ -62,6 +62,7 @@ We tested the following deep learning frameworks on their releases of the last t
 |PaddlePaddle|v2.4.0|cmake+ninja|√|
 |PaddlePaddle|v2.5.0|cmake+ninja|√|
 |PaddlePaddle|v2.6.0|cmake+ninja|√|
+|PaddlePaddle|v2.6.1|cmake+ninja|√|
 
 ## How To Build Deep Learning Frameworks With DCOV
 See [here](frameworks/README.MD).
