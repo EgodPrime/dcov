@@ -1,5 +1,5 @@
 git clone https://github.com/PaddlePaddle/Paddle.git
 pushd Paddle
-git checkout v2.6.0
+git checkout v2.6.1
 patch -p1 < ../Paddle.patch
 popd

@@ -73,8 +73,8 @@ bash prepare_paddle.sh
 
 ### create python env
 ```bash
-conda create -n pp2.6.0-ins python=3.9
-conda activate pp2.6.0-ins
+conda create -n pp2.6.1-ins python=3.9
+conda activate pp2.6.1-ins
 apt install -y swig wget patchelf unrar
 pip install numpy protobuf ninja cmake
 conda deactivate
@@ -85,7 +85,7 @@ conda deactivate
 # in one terminal
 ../dcov_ins_server
 # in another terminal
-conda activate pp2.6.0-ins
+conda activate pp2.6.1-ins
 bash compile_paddle.sh
 conda deactivate
 ```
