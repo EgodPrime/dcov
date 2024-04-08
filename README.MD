@@ -16,7 +16,7 @@ dcov_ins_server: offers atomic and increasing basic block id to libdcov_ins.so
 
 ```bash
 docker build -t dcov:latest -f Dockerfile .
-docker run -itd --name dcov -v ${PWD}:/root dcov:latest
+docker run -itd --name dcov -v ${PWD}:/root/dcov dcov:latest
 docker exec -it dcov bash
 ```
 
@@ -25,18 +25,33 @@ docker exec -it dcov bash
 We use gcc 9.4.0 to compile dcov and DL frameworks
 
 ```bash
+pushd dcov
 # download and extract
-wget -c https://mirrors.tuna.tsinghua.edu.cn/gnu/gcc/gcc-9.4.0/gcc-9.4.0.tar.gz
+wget -c --no-check-certificate https://mirrors.tuna.tsinghua.edu.cn/gnu/gcc/gcc-9.4.0/gcc-9.4.0.tar.gz
 tar -zxf gcc-9.4.0.tar.gz
 # build and install
 bash build_gcc.sh
+# delete the useless files
+rm gcc-9.4.0.tar.gz
+rm -rf gcc-9.4.0
+rm -rf gcc_build
+popd
 ```
 
-### Step III. Compile dcov from source & Installation
+### Step III. Install Miniconda
 
 ```bash
-conda create -n py39 python=3.9
-conda actiavte py39
+wget -c --no-check-certificate https://repo.anaconda.com/miniconda/Miniconda3-py39_24.1.2-0-Linux-x86_64.sh
+bash Miniconda3-py39_24.1.2-0-Linux-x86_64.sh
+# during the installation, inputs enter, q, yes, enter, yes
+rm /root/Miniconda3-py39_24.1.2-0-Linux-x86_64.sh
+```
+
+restart the terminal to make conda work, and you will see a `(base)` at the most left of the terminal
+
+### Step IV. Compile dcov from source & Installation
+
+```bash
 pushd dcov
 make
 # add sudo if you are not the root user or not in docker container
