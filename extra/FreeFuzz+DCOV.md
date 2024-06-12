@@ -4,11 +4,11 @@
 
 ### Coverage curve of TensorFlow 
 
-<img src="./FreeFuzz+DCOV-TensorFLow.png" alt="Curve">
+<img src="https://anonymous.4open.science/r/dcov-4710/extra/FreeFuzz+DCOV-TensorFLow.png" alt="Curve">
 
 ### Coverage curve of PyTorch
 
-<img src="./FreeFuzz+DCOV-PyTorch.png" alt="Curve">
+<img src="https://anonymous.4open.science/r/dcov-4710/extra/FreeFuzz+DCOV-PyTorch.png" alt="Curve">
 
 ### Description
 
