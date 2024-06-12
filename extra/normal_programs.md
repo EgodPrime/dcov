@@ -34,6 +34,8 @@ We generate test cases for live555 by AFLNet's turtorial: https://github.com/afl
 
 We run AFLNet for 4 hours and obtain 843 test cases
 
+### test case replay [log](./run_live555.log)
+
 ### coverage curve
 
 <img src="https://anonymous.4open.science/r/dcov-4710/extra/coverage_live555.png" alt="Curve">
