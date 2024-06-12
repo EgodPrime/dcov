@@ -83,4 +83,4 @@ We tested the following deep learning frameworks on their releases of the last t
 See [here](frameworks/README.MD).
 
 ## How To Replay All The Evaluations In Our Paper
-See [here](experiment/REAMDE.MD).
+See [here](experiment/README.MD).
