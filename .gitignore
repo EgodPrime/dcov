@@ -4,7 +4,7 @@
 **/*.so
 **/dcov_ins_server
 **/*.txt
-**/*.png
+**/experiment/**/*.png
 **/bazel-out
 **/*.coverage
 **/FreeFuzz
