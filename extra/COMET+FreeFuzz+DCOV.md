@@ -51,4 +51,12 @@ COMET is an archetecture level fuzzer that perfrom neural network model and laye
 
 ## Comparaison
 
-We notice that the C coverage curve of COMET grows simlilarly to that of FreeFuzz. However, the curve of COMET starts from a much higher point(34124 in TensorFlow and 34224 in PyTorch) than that of FreeFuzz (14645 in TensorFlow and 13554 in PyTorch). This gap cannot only be due to the difference between DL framework versions, but also can be attributed to the fact that COMET is a model-level fuzzer. Executing a model requires the paticipant of more components in DL frameworks.
+We notice that the C coverage curve of COMET grows simlilarly to that of FreeFuzz. However, we observe the below differences:
+
+1.  For TensorFlow, the curve of COMET starts from a higher point (34124) than that of FreeFuzz (14645). 
+
+2.  For PyTorch, the curve of COMET starts from a lower point (8218) than that of FreeFuzz (13554).
+
+The first reason for the differences is the DL framework version difference between COMET and FreeFuzz.
+
+The second reason can be attributed to the fact that COMET is a model-level fuzzer while FreeFuzz is an API-level fuzzer. Executing a model and executing an API call require the different components in DL frameworks.
