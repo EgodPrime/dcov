@@ -2,31 +2,34 @@ import ctypes
 import sys
 from os.path import abspath, join, dirname
 
-dcov_info = ctypes.CDLL(join(dirname(abspath(__file__)), 'libdcov_info.so'))
+dcov_info = ctypes.CDLL('libdcov_info.so')
 sci = None
 file_matcher = None
 
 
-def get_dlf_src_path():
+def get_dlf_src_path(package_name=None):
     import site
     import os
-    dlf_prefix = site.getsitepackages()[-1]
-    dlf_libs = ["tensorflow", "torch", "paddle"]
-    for entry in os.listdir(dlf_prefix):
-        if entry in dlf_libs:
-            res = os.path.join(dlf_prefix, entry)
-            print(f"DL framework package source is {res}")
-            return res
-    raise Exception("Current python environment does not contain a supported deep learning framework")
+    
+    python_env_dir = site.getsitepackages()[-1]
+    if package_name is None:
+        print("package name is not specified, use the site-package dir")
+        return python_env_dir
+    package_dir = os.path.join(python_env_dir, package_name)
+    if not os.path.exists(package_dir):
+        raise FileNotFoundError(f"{package_dir} is not a correct path")
+
+    print(f"Package being instrumented is {package_dir}")
+    return package_dir
 
 
-def insert_slipcover():
-    from .slipcover import Slipcover
-    from .importer import FileMatcher, SlipcoverMetaPathFinder
+def insert_slipcover(**kwargs):
+    from dcov.slipcover import Slipcover
+    from dcov.importer import FileMatcher, SlipcoverMetaPathFinder
     global file_matcher
     global sci
     file_matcher = FileMatcher()
-    lib_pkg_source = get_dlf_src_path()
+    lib_pkg_source = get_dlf_src_path(**kwargs)
     file_matcher.addSource(lib_pkg_source)
     sci = Slipcover(
         immediate=True,
@@ -44,16 +47,16 @@ def insert_slipcover():
     )
 
 
-def init_bitmap_python():
-    insert_slipcover()
+def init_bitmap_python(**kwargs):
+    insert_slipcover(**kwargs)
     dcov_info.init_bitmap_python()
 
 
 init_bitmap_c = dcov_info.init_bitmap_c
 
 
-def init_bitmap():
-    insert_slipcover()
+def init_bitmap(**kwargs):
+    insert_slipcover(**kwargs)
     dcov_info.init_bitmap()
 
 

@@ -4,7 +4,7 @@ from importlib.abc import Loader, MetaPathFinder
 from pathlib import Path
 from typing import Any
 
-from .slipcover import Slipcover
+from dcov.slipcover import Slipcover
 
 
 class SlipcoverLoader(Loader):

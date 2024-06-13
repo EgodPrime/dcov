@@ -24,39 +24,39 @@ ifeq ($(NORMAL_BIT_COUNT), 1)
   CXX_FLAGS_COMMON+= -DNORMAL_BIT_COUNT
 endif
 
-all: dcov_ins dcov_ins_server dcov_trace dcov_info probe
+all: dcov_ins_server libdcov_info.so libdcov_trace.so libdcov_ins.so probe
 	
 .PHONY: check
 check:
 	@echo "PYTHON_INCLUDE_DIR: ${PYTHON_INCLUDE_DIR}" 
 
-.PHONY: dcov_info
-dcov_info:
-	${CXX} ${CXX_FLAGS_COMMON} -lrt -pthread -fopenmp  dcov_info.cxx -o libdcov_info.so
+.PHONY: libdcov_info.so
+libdcov_info.so: src/dcov_info.cxx
+	${CXX} ${CXX_FLAGS_COMMON} -lrt -pthread -fopenmp  src/dcov_info.cxx -o dcov/libdcov_info.so
 
-.PHONY: dcov_trace
-dcov_trace:
-	${CXX} ${CXX_FLAGS_COMMON} -lrt dcov_info.cxx dcov_trace.cxx -o libdcov_trace.so
+.PHONY: libdcov_trace.so
+libdcov_trace.so: src/dcov_info.cxx src/dcov_trace.cxx
+	${CXX} ${CXX_FLAGS_COMMON} -lrt src/dcov_info.cxx src/dcov_trace.cxx -o dcov/libdcov_trace.so
 
-.PHONY: dcov_ins
-dcov_ins:
-	${CXX} ${CXX_FLAGS_COMMON} -fno-rtti -Wno-literal-suffix -I${GCC_PLUGIN_HEADERS} MurmurHash3.cxx dcov_ins.cxx -o libdcov_ins.so
+.PHONY: libdcov_ins.so
+libdcov_ins.so: src/MurmurHash3.cxx src/dcov_ins.cxx
+	${CXX} ${CXX_FLAGS_COMMON} -fno-rtti -Wno-literal-suffix -I${GCC_PLUGIN_HEADERS} src/MurmurHash3.cxx src/dcov_ins.cxx -o dcov/libdcov_ins.so
 
 .PHONY: dcov_ins_server
-dcov_ins_server:
-	${CXX} -std=c++17 -O3 -lrt dcov_ins_server.cxx -o dcov_ins_server
+dcov_ins_server: src/dcov_ins_server.cxx
+	${CXX} -std=c++17 -O3 -lrt src/dcov_ins_server.cxx -o dcov/dcov_ins_server
 
 .PHONY: probe
-probe:
-	${CXX} ${CXX_FLAGS_COMMON} -pthread -fopenmp -I./ -I${PYTHON_INCLUDE_DIR} dcov_trace.cxx MurmurHash3.cxx probe.cxx -o probe.so
+probe: src/dcov_trace.cxx src/MurmurHash3.cxx src/probe.cxx
+	${CXX} ${CXX_FLAGS_COMMON} -pthread -fopenmp -I./ -I${PYTHON_INCLUDE_DIR} src/dcov_trace.cxx src/MurmurHash3.cxx src/probe.cxx -o dcov/probe.so
 
 .PHONY: install
 install:
-	cp libdcov*.so /usr/lib
+	cp -f dcov/libdcov*.so /usr/lib/
 
 .PHONY: clean
 clean:
-	rm -f libdcov*.so probe.so dcov_ins_server
+	rm -f dcov/libdcov*.so dcov/probe.so dcov/dcov_ins_server
 
 .PHONY: uninstall
 uninstall:
