@@ -3,8 +3,7 @@ import time
 import os
 import argparse
 import sys
-sys.path.append('../../..')
-from dcov import dcov
+import dcov
 
 data_dir_prefix = abspath('../benchmark')
 
@@ -22,7 +21,7 @@ def conduct_exp(libname:str, predo, report_and_save):
         
         print(f"Executing: {file_path}, ", end="")
         try:
-            for _ in range(100):
+            for _ in range(10):
                 exec(code)
         except:
             print("something wrong!")
@@ -40,7 +39,7 @@ def predo_base(libname:str):
 def predo_dcov(libname:str):
     f = open(f'{libname}_dcov.txt', 'w')
     f.write(f"iteration,time_used(ms),python_coverage,c_coverage\n")
-    dcov.init_bitmap()
+    dcov.init_bitmap(package_name=libname)
     return f
     
 def report_and_save_base(idx, time_used, f):

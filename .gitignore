@@ -11,5 +11,5 @@
 **/all.info
 **/gcc-*
 **/gcc_*
-
+*.egg-info
 **/*.coverage

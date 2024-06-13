@@ -1,4 +1,4 @@
-from . import dcov
+import dcov
 
 
 
@@ -6,14 +6,19 @@ if __name__ == "__main__":
     import os
     import time
 
-    root_dir = '/root/benchmark'
+    root_dir = 'experiment/benchmark'
+    
+    # tensorflow, torch, paddle
+    dlf_name = 'tensorflow' 
 
-    dcov.init_bitmap()
+    dcov.init_bitmap(package_name=dlf_name)
     # dcov.init_bitmap_python()
     # dcov.init_bitmap_c()
 
     for dir_path, dirnames, _ in os.walk(root_dir):
         for dirname in dirnames:
+            if dirname != dlf_name:
+                continue
             print(f'walking {dirname}')
             for dirpath, _, filenames in os.walk(os.path.join(dir_path, dirname)):
                 for filename in filenames:

@@ -3,13 +3,12 @@ import time
 import os
 import argparse
 import sys
+import dcov
+
 cur_dir = dirname(abspath(__file__))
-dcov_par = dirname(dirname(dirname(cur_dir)))
-sys.path.append(dcov_par)
-from dcov import dcov
 
 num_ps = 100
-repeat = 100
+repeat = 10
 data_dir_prefix = join(dirname(cur_dir),'benchmark')
 
 def get_dlf_src_path():
@@ -24,11 +23,11 @@ def get_dlf_src_path():
             return res
     return None
         
-def predo_base():
+def predo_base(libname):
     pass
 
 cov = None
-def predo_coverage_py():
+def predo_coverage_py(libname):
     import coverage
     global cov
     cov = coverage.Coverage(data_file='coverage.py.coverage',
@@ -37,7 +36,7 @@ def predo_coverage_py():
                             branch=False,)
 
 sci = None   
-def predo_slipcover():
+def predo_slipcover(libname):
     global sci
     import slipcover as sc
     file_matcher = sc.FileMatcher()
@@ -58,17 +57,17 @@ def predo_slipcover():
         ),
     )
     
-def predo_dcov_python():
+def predo_dcov_python(libname):
     from dcov import dcov
-    dcov.init_bitmap_python()
+    dcov.init_bitmap_python(package_name=libname)
     
-def predo_dcov_C():
+def predo_dcov_C(libname):
     from dcov import dcov
     dcov.init_bitmap_c()
     
-def predo_dcov():
+def predo_dcov(libname):
     from dcov import dcov
-    dcov.init_bitmap()
+    dcov.init_bitmap(package_name=libname)
     
 def execution_base(code):
     exec(code)
@@ -100,7 +99,7 @@ def analysis_dcov():
     dcov.get_bb_cnts()
 
 def conduct_exp(libname:str, mode, predo, execution, analysis):
-    predo()
+    predo(libname)
     exec(f"import {libname}")
     data_dir = join(data_dir_prefix, libname)
     time_ET = 0

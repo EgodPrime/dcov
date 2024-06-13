@@ -56,6 +56,8 @@ pushd dcov
 make
 # add sudo if you are not the root user or not in docker container
 make install
+conda activate <your python env>
+pip install -e .
 popd
 ```
 

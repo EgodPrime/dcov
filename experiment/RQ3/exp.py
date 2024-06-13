@@ -1,14 +1,13 @@
 import sys
 import time
-sys.path.append('../../..')
-from dcov import dcov
+import dcov
 
-repeat = 100
+repeat = 10
 
 if __name__ == '__main__':
     f = open('results.txt', 'a+')
     
-    dcov.init_bitmap()
+    dcov.init_bitmap(package_name='tensorflow')
     dcov.randomize_bitmap()
     
     bitmap_size = dcov.dcov_info.get_bitmap_size()>>3
