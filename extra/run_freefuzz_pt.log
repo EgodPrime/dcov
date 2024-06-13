@@ -1,0 +1,1387 @@
+Testing on  ['torch']
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+torch.isnan
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16809, c_cov=13554
+torch.nn.Dropout3d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16840, c_cov=13992
+torch.nn.GroupNorm
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16877, c_cov=14813
+torch.narrow
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16877, c_cov=14990
+torch.reshape
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16877, c_cov=15062
+torch.take
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16877, c_cov=15147
+torch.atanh
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16877, c_cov=15192
+torch.expm1
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16877, c_cov=15249
+torch.nn.SiLU
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16880, c_cov=15294
+torch.prod
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16880, c_cov=15411
+torch.nn.utils.clip_grad_norm_
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16884, c_cov=15514
+torch.ones_like
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16884, c_cov=15566
+torch.exp
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16884, c_cov=15609
+torch.lstsq
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16885, c_cov=15609
+torch.nn.ConstantPad2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16889, c_cov=15767
+torch.nn.functional.hardsigmoid
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16892, c_cov=15830
+torch.nn.Softsign
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16893, c_cov=15984
+torch.nn.functional.bilinear
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16893, c_cov=16532
+torch.nn.Softmax2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16898, c_cov=16609
+torch.nn.CELU
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16902, c_cov=16654
+torch.gt
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16902, c_cov=16690
+torch.max
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16902, c_cov=16833
+torch.nn.functional.max_unpool3d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16910, c_cov=16940
+torch.randint
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16910, c_cov=16968
+torch.rot90
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16910, c_cov=17139
+torch.nn.functional.leaky_relu
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16914, c_cov=17205
+torch.kron
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16914, c_cov=17258
+torch.poisson
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16914, c_cov=17302
+torch.nn.functional.max_unpool1d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16926, c_cov=17391
+torch.rad2deg
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16926, c_cov=17448
+torch.nn.functional.avg_pool1d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16926, c_cov=17586
+torch.nn.Hardswish
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16929, c_cov=17628
+torch.save
+torch.nn.SELU
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16933, c_cov=17660
+torch.nextafter
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16933, c_cov=17695
+torch.add
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16933, c_cov=17717
+torch.nn.functional.adaptive_max_pool2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16945, c_cov=17774
+torch.nn.GRUCell
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16976, c_cov=18235
+torch.chain_matmul
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16978, c_cov=18351
+torch.nn.functional.celu
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16979, c_cov=18394
+torch.ger
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16979, c_cov=18437
+torch.nn.functional.multilabel_margin_loss
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16988, c_cov=18535
+torch.tril
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16988, c_cov=18576
+torch.set_num_threads
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16988, c_cov=18657
+torch.cumprod
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16988, c_cov=18721
+torch.lu
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16993, c_cov=18803
+torch.sparse_coo_tensor
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16993, c_cov=18985
+torch.log1p
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16993, c_cov=19030
+torch.trunc
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16993, c_cov=19074
+torch.addcdiv
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=16993, c_cov=19123
+torch.einsum
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17015, c_cov=19440
+torch.empty_strided
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17015, c_cov=19472
+torch.nn.ELU
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17020, c_cov=19520
+torch.nn.InstanceNorm1d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17058, c_cov=19807
+torch.ravel
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17058, c_cov=19834
+torch.trace
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17058, c_cov=19870
+torch.sgn
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17058, c_cov=19922
+torch.nanmedian
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17058, c_cov=20015
+torch.nn.functional.layer_norm
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17059, c_cov=20091
+torch.nn.functional.max_pool2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17063, c_cov=20255
+torch.vander
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17063, c_cov=20382
+torch.true_divide
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17063, c_cov=20420
+torch.nn.Fold
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17068, c_cov=20460
+torch.nn.MultiheadAttention
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17198, c_cov=20820
+torch.mvlgamma
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17198, c_cov=20948
+torch.reciprocal
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17198, c_cov=20983
+torch.cdist
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17200, c_cov=21164
+torch.msort
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17200, c_cov=21254
+torch.erfc
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17200, c_cov=21290
+torch.hypot
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17200, c_cov=21326
+torch.log
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17200, c_cov=21363
+torch.nn.TransformerDecoderLayer
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17255, c_cov=21791
+torch.range
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17255, c_cov=21848
+torch.nn.functional.silu
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17256, c_cov=21886
+torch.dist
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17256, c_cov=22025
+torch.isreal
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17256, c_cov=22120
+torch.nn.GELU
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17257, c_cov=22768
+torch.nn.functional.dropout
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17257, c_cov=22798
+torch.chunk
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17257, c_cov=22800
+torch.nn.AdaptiveMaxPool1d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17260, c_cov=22842
+torch.amin
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17260, c_cov=22892
+torch.nn.functional.pixel_shuffle
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17260, c_cov=22955
+torch.view_as_real
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17260, c_cov=22973
+torch.cholesky_inverse
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17260, c_cov=23129
+torch.nn.functional.relu
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17261, c_cov=23169
+torch.acos
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17261, c_cov=23205
+torch.nn.AdaptiveAvgPool3d
+torch.broadcast_to
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17261, c_cov=23233
+torch.scatter
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17261, c_cov=23297
+torch.addcmul
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17261, c_cov=23335
+torch.nn.functional.softsign
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17261, c_cov=23335
+torch.nn.functional.sigmoid
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17261, c_cov=23355
+torch.cumsum
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17261, c_cov=23468
+torch.scatter_add
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17261, c_cov=23555
+torch.broadcast_tensors
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17262, c_cov=23582
+torch.angle
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17262, c_cov=23654
+torch.baddbmm
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17262, c_cov=23718
+torch.fmax
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17262, c_cov=23762
+torch.nn.LogSigmoid
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17262, c_cov=23827
+torch.nn.functional.embedding
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17268, c_cov=23990
+torch.ones
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17268, c_cov=24041
+torch.split
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17270, c_cov=24066
+torch.cummax
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17270, c_cov=24150
+torch.clone
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17270, c_cov=24151
+torch.matrix_exp
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17270, c_cov=24587
+torch.broadcast_shapes
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17286, c_cov=24587
+torch.ge
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17286, c_cov=24623
+torch.cos
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17286, c_cov=24659
+torch.nn.AvgPool3d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17290, c_cov=24782
+torch.nn.functional.conv1d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17290, c_cov=26183
+torch.rsqrt
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17290, c_cov=26218
+torch.nn.functional.fold
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17290, c_cov=26218
+torch.nn.ReplicationPad2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17291, c_cov=26274
+torch.min
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17291, c_cov=26368
+torch.eq
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17291, c_cov=26404
+torch.nn.MultiLabelSoftMarginLoss
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17303, c_cov=26530
+torch.randperm
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17303, c_cov=26637
+torch.tanh
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17303, c_cov=26668
+torch.nn.functional.avg_pool3d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17303, c_cov=26673
+torch.nn.functional.softshrink
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17303, c_cov=26713
+torch.mul
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17303, c_cov=26716
+torch.nn.functional.max_pool3d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17306, c_cov=26799
+torch.isfinite
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17306, c_cov=26846
+torch.nn.GRU
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17369, c_cov=26860
+torch.inverse
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17369, c_cov=27070
+torch.quantile
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17369, c_cov=27425
+torch.round
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17369, c_cov=27465
+torch.float_power
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17369, c_cov=27526
+torch.logical_not
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17369, c_cov=27588
+torch.nn.functional.nll_loss
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17373, c_cov=27701
+torch.cross
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17373, c_cov=27776
+torch.dstack
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17373, c_cov=27968
+torch.nn.functional.threshold
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17377, c_cov=28040
+torch.addmm
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17377, c_cov=28099
+torch.nn.RNN
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17392, c_cov=28124
+torch.nn.Hardshrink
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17393, c_cov=28159
+torch.bitwise_not
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17393, c_cov=28220
+torch.nn.Threshold
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17395, c_cov=28221
+torch.flip
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17395, c_cov=28241
+torch.argsort
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17395, c_cov=28282
+torch.nn.MaxPool2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17400, c_cov=28282
+torch.gcd
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17400, c_cov=28312
+torch.argmin
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17400, c_cov=28357
+torch.nn.RNNCell
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17409, c_cov=28400
+torch.sum
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17409, c_cov=28477
+torch.nn.functional.local_response_norm
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17418, c_cov=28571
+torch.maximum
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17418, c_cov=28592
+torch.svd
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17418, c_cov=28744
+torch.log2
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17418, c_cov=28766
+torch.neg
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17418, c_cov=28778
+torch.nn.Upsample
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17446, c_cov=28929
+torch.isneginf
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17446, c_cov=28983
+torch.matmul
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17446, c_cov=29124
+torch.randn
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17446, c_cov=29186
+torch.nn.RReLU
+torch.cholesky_solve
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17446, c_cov=29244
+torch.zeros_like
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17446, c_cov=29276
+torch.bmm
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17446, c_cov=29280
+torch.multinomial
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17446, c_cov=29472
+torch.nn.functional.relu6
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17450, c_cov=29596
+torch.nansum
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17450, c_cov=29649
+torch.nn.LSTMCell
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17459, c_cov=29694
+torch.nn.functional.hardswish
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17460, c_cov=29728
+torch.sub
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17460, c_cov=29751
+torch.nn.functional.linear
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17460, c_cov=29766
+torch.norm
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17469, c_cov=29850
+torch.nn.AlphaDropout
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17471, c_cov=29917
+torch.unbind
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17471, c_cov=29955
+torch.nn.MarginRankingLoss
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17476, c_cov=30001
+torch.nn.ReLU6
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17484, c_cov=30042
+torch.set_default_dtype
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17484, c_cov=30059
+torch.nn.functional.ctc_loss
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17485, c_cov=30149
+torch.median
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17485, c_cov=30228
+torch.nn.functional.adaptive_max_pool3d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17487, c_cov=30297
+torch.erfinv
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17487, c_cov=30333
+torch.fliplr
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17487, c_cov=30363
+torch.nn.MaxPool1d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17493, c_cov=30459
+torch.polygamma
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17493, c_cov=30505
+torch.sin
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17493, c_cov=30541
+torch.tensordot
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17500, c_cov=30646
+torch.nanquantile
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17500, c_cov=30734
+torch.mv
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17500, c_cov=30814
+torch.swapaxes
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17500, c_cov=30844
+torch.logit
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17500, c_cov=30892
+torch.triu_indices
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17500, c_cov=30936
+torch.nn.functional.cosine_similarity
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17500, c_cov=30992
+torch.nn.functional.gelu
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17500, c_cov=30997
+torch.nn.functional.mse_loss
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17505, c_cov=31069
+torch.nn.LSTM
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17526, c_cov=37222
+torch.bitwise_xor
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17526, c_cov=37254
+torch.isclose
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17526, c_cov=37385
+torch.is_nonzero
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17526, c_cov=37424
+torch.count_nonzero
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17526, c_cov=37487
+torch.std_mean
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17526, c_cov=37598
+torch.nn.BCELoss
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17533, c_cov=37661
+torch.result_type
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17533, c_cov=37691
+torch.nn.ReplicationPad1d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17534, c_cov=37722
+torch.nn.MaxUnpool3d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17537, c_cov=37730
+torch.nn.functional.adaptive_avg_pool2d
+torch.nn.AdaptiveAvgPool1d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17538, c_cov=37802
+torch.nn.BCEWithLogitsLoss
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17547, c_cov=37875
+torch.sign
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17547, c_cov=37909
+torch.arange
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17547, c_cov=37985
+torch.div
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17547, c_cov=37991
+torch.set_flush_denormal
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17547, c_cov=38002
+torch.conj
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17547, c_cov=38035
+torch.renorm
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17547, c_cov=38084
+torch.diag_embed
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17547, c_cov=38111
+torch.mm
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17547, c_cov=38155
+torch.movedim
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17547, c_cov=38180
+torch.minimum
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17547, c_cov=38200
+torch.nn.ConvTranspose3d
+py_cov=17583, c_cov=38519
+torch.atan2
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17583, c_cov=38554
+torch.mode
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17583, c_cov=38634
+torch.nn.Dropout2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17587, c_cov=38635
+torch.nn.functional.max_unpool2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17591, c_cov=38639
+torch.empty
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17591, c_cov=38639
+torch.unique_consecutive
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17595, c_cov=38684
+torch.are_deterministic_algorithms_enabled
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17595, c_cov=38684
+torch.isposinf
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17595, c_cov=38725
+torch.nn.ConvTranspose2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17607, c_cov=38759
+torch.acosh
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17607, c_cov=38795
+torch.dot
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17607, c_cov=38832
+torch.nn.ReflectionPad1d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17608, c_cov=38865
+torch.nn.functional.adaptive_avg_pool3d
+torch.nn.LocalResponseNorm
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17611, c_cov=38866
+torch.square
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17611, c_cov=38894
+torch.nn.TransformerEncoderLayer
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17641, c_cov=38894
+torch.nn.functional.elu
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17641, c_cov=38895
+torch.heaviside
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17641, c_cov=38942
+torch.nn.CTCLoss
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17643, c_cov=38943
+torch.nn.LPPool1d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17649, c_cov=38961
+torch.masked_select
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17649, c_cov=39036
+torch.nn.PixelShuffle
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17650, c_cov=39036
+torch.nn.MaxPool3d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17652, c_cov=39036
+torch.nn.functional.dropout3d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17656, c_cov=39064
+torch.real
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17656, c_cov=39083
+torch.unique
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17667, c_cov=39168
+torch.nn.functional.alpha_dropout
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17668, c_cov=39168
+torch.nn.PReLU
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17671, c_cov=39235
+torch.bitwise_and
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17671, c_cov=39258
+torch.nn.functional.tanh
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17671, c_cov=39259
+torch.stack
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17671, c_cov=39384
+torch.nn.functional.poisson_nll_loss
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17675, c_cov=39438
+torch.bincount
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17675, c_cov=39469
+torch.remainder
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17675, c_cov=39539
+torch.eye
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17675, c_cov=39630
+torch.pow
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17675, c_cov=39659
+torch.nonzero
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17675, c_cov=39711
+torch.topk
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17675, c_cov=39761
+torch.signbit
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17675, c_cov=39804
+torch.atleast_3d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17678, c_cov=39833
+torch.asinh
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17678, c_cov=39869
+torch.zeros
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17678, c_cov=39870
+torch.nn.Softplus
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17679, c_cov=39905
+torch.hstack
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17679, c_cov=39952
+torch.where
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17679, c_cov=40031
+torch.diag
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17679, c_cov=40077
+torch.full_like
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17679, c_cov=40112
+torch.nn.ConstantPad3d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17680, c_cov=40112
+torch.nn.Flatten
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17681, c_cov=40137
+torch.nn.UpsamplingNearest2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17682, c_cov=40201
+torch.i0
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17682, c_cov=40237
+torch.nn.Softmax
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17683, c_cov=40247
+torch.nn.functional.hardshrink
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17683, c_cov=40247
+torch.triu
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17683, c_cov=40285
+torch.nn.functional.conv_transpose3d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17683, c_cov=40340
+torch.copysign
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17683, c_cov=40404
+torch.rand_like
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17683, c_cov=40438
+torch.igamma
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17683, c_cov=40473
+torch.linspace
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17683, c_cov=40542
+torch.nn.PoissonNLLLoss
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17686, c_cov=40542
+torch.cartesian_prod
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17687, c_cov=40618
+torch.nn.functional.rrelu
+torch.nn.functional.softmin
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17696, c_cov=40618
+torch.bucketize
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17696, c_cov=40695
+torch.is_tensor
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17696, c_cov=40695
+torch.nn.functional.interpolate
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17705, c_cov=40698
+torch.nn.functional.cross_entropy
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17707, c_cov=40798
+torch.sigmoid
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17707, c_cov=40810
+torch.deg2rad
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17707, c_cov=40858
+torch.as_strided
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17707, c_cov=40886
+torch.get_rng_state
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17707, c_cov=40911
+torch.bernoulli
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17707, c_cov=40965
+torch.logaddexp2
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17707, c_cov=41007
+torch.nn.ZeroPad2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17707, c_cov=41007
+torch.nn.ReLU
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17708, c_cov=41007
+torch.vstack
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17708, c_cov=41048
+torch.nn.functional.multilabel_soft_margin_loss
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17709, c_cov=41049
+torch.nn.functional.logsigmoid
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17709, c_cov=41049
+torch.gather
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17709, c_cov=41076
+torch.nn.MaxUnpool1d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17712, c_cov=41079
+torch.digamma
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17712, c_cov=41115
+torch.nn.ReflectionPad2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17713, c_cov=41131
+torch.trapz
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17713, c_cov=41188
+torch.promote_types
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17713, c_cov=41207
+torch.searchsorted
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17713, c_cov=41254
+torch.cat
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17713, c_cov=41288
+torch.nn.Conv2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17719, c_cov=41535
+torch.addr
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17719, c_cov=41618
+torch.log10
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17719, c_cov=41654
+torch.nn.MaxUnpool2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17722, c_cov=41654
+torch.nn.functional.prelu
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17722, c_cov=41667
+torch.as_tensor
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17722, c_cov=41703
+torch.diagonal
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17722, c_cov=41731
+torch.ceil
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17722, c_cov=41756
+torch.erf
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17722, c_cov=41793
+torch.floor_divide
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17722, c_cov=41830
+torch.isinf
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17722, c_cov=41870
+torch.fmod
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17722, c_cov=41926
+torch.lu_solve
+torch.nn.functional.normalize
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17726, c_cov=41963
+torch.squeeze
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17726, c_cov=41990
+torch.view_as_complex
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17726, c_cov=42021
+torch.bitwise_or
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17726, c_cov=42051
+torch.swapdims
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17726, c_cov=42080
+torch.exp2
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17726, c_cov=42130
+torch.histc
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17726, c_cov=42203
+torch.transpose
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17726, c_cov=42207
+torch.asin
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17726, c_cov=42243
+torch.nn.functional.rrelu_
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17726, c_cov=42309
+torch.nn.AdaptiveMaxPool2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17726, c_cov=42309
+torch.lerp
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17726, c_cov=42367
+torch.lt
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17726, c_cov=42403
+torch.nn.functional.lp_pool2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17729, c_cov=42435
+torch.nn.RNNBase
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17729, c_cov=42435
+torch.flipud
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17729, c_cov=42465
+torch.logical_xor
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17729, c_cov=42507
+torch.unsqueeze
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17729, c_cov=42509
+torch.imag
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17729, c_cov=42529
+torch.nn.Embedding
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17741, c_cov=42554
+torch.nn.functional.conv3d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17741, c_cov=42596
+torch.nn.functional.avg_pool2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17741, c_cov=42596
+torch.empty_like
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17741, c_cov=42621
+torch.logical_or
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17741, c_cov=42663
+torch.var
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17741, c_cov=42778
+torch.nn.Identity
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17741, c_cov=42778
+torch.matrix_rank
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17742, c_cov=42778
+torch.nn.Softshrink
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17743, c_cov=42778
+torch.nn.functional.conv_transpose2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17743, c_cov=42780
+torch.nn.Tanhshrink
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17744, c_cov=42787
+torch.flatten
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17744, c_cov=42794
+torch.logspace
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17744, c_cov=42870
+torch.randn_like
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17744, c_cov=42904
+torch.nn.NLLLoss
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17745, c_cov=42951
+torch.addbmm
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17745, c_cov=43048
+torch.nn.functional.softplus
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17745, c_cov=43049
+torch.kthvalue
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17745, c_cov=43112
+torch.can_cast
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17745, c_cov=43138
+torch.nn.UpsamplingBilinear2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17745, c_cov=43145
+torch.nn.functional.batch_norm
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17748, c_cov=43180
+torch.logical_and
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17748, c_cov=43225
+torch.nn.Hardtanh
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17748, c_cov=43225
+torch.mean
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17748, c_cov=43250
+torch.argmax
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17748, c_cov=43287
+torch.nn.functional.hardtanh
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17748, c_cov=43288
+torch.nn.functional.softmax
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17748, c_cov=43288
+torch.clamp
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17748, c_cov=43328
+torch.nn.functional.pad
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17748, c_cov=43333
+torch.nn.BatchNorm3d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17770, c_cov=43353
+torch.qr
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17770, c_cov=43493
+torch.cummin
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17770, c_cov=43580
+torch.nn.AdaptiveAvgPool2d
+torch.nn.ReplicationPad3d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17771, c_cov=43616
+torch.nn.Linear
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17771, c_cov=43622
+torch.diagflat
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17771, c_cov=43651
+torch.atan
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17771, c_cov=43685
+torch.nn.AvgPool2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17775, c_cov=43687
+torch.atleast_1d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17778, c_cov=43716
+torch.nn.Tanh
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17778, c_cov=43716
+torch.nn.CrossEntropyLoss
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17781, c_cov=43717
+torch.pinverse
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17781, c_cov=43850
+torch.nn.TripletMarginLoss
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17787, c_cov=43920
+torch.frac
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17787, c_cov=43956
+torch.nn.functional.embedding_bag
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17805, c_cov=44117
+torch.logsumexp
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17805, c_cov=44230
+torch.tan
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17805, c_cov=44284
+torch.nn.functional.adaptive_avg_pool1d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17805, c_cov=44287
+torch.allclose
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17805, c_cov=44328
+torch.nn.MultiLabelMarginLoss
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17805, c_cov=44328
+torch.combinations
+torch.nn.functional.tanhshrink
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17805, c_cov=44328
+torch.le
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17805, c_cov=44350
+torch.nn.AdaptiveMaxPool3d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17805, c_cov=44351
+torch.nn.functional.instance_norm
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17805, c_cov=44356
+torch.outer
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17805, c_cov=44377
+torch.nn.CosineSimilarity
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17806, c_cov=44377
+torch.nn.functional.leaky_relu_
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17806, c_cov=44378
+torch.tril_indices
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17806, c_cov=44422
+torch.roll
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17806, c_cov=44473
+torch.nn.Conv3d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17811, c_cov=44552
+torch.nn.Dropout
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17811, c_cov=44552
+torch.cholesky
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17811, c_cov=44618
+torch.nn.functional.max_pool1d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17811, c_cov=44619
+torch.normal
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17811, c_cov=44681
+torch.complex
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17811, c_cov=44760
+torch.sinh
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17811, c_cov=44796
+torch.nn.BatchNorm1d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17811, c_cov=44796
+torch.index_select
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17811, c_cov=44834
+torch.nn.InstanceNorm2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17811, c_cov=44853
+torch.nn.Sigmoid
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17811, c_cov=44853
+torch.amax
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17811, c_cov=44880
+torch.equal
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17811, c_cov=44899
+torch.nn.functional.dropout2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17812, c_cov=44899
+torch.use_deterministic_algorithms
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17812, c_cov=44917
+torch.logaddexp
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17812, c_cov=44951
+torch.std
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17812, c_cov=45040
+torch.xlogy
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17812, c_cov=45114
+torch.nn.functional.binary_cross_entropy_with_logits
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17812, c_cov=45131
+torch.polar
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17812, c_cov=45185
+torch.lcm
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17812, c_cov=45215
+torch.nn.LeakyReLU
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17813, c_cov=45215
+torch.nn.functional.selu
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17814, c_cov=45243
+torch.nn.Conv1d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17819, c_cov=45246
+torch.slogdet
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17819, c_cov=45362
+torch.addmv
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17819, c_cov=45403
+torch.full
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17819, c_cov=45432
+torch.nn.Bilinear
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17826, c_cov=45437
+torch.tensor_split
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17826, c_cov=45507
+torch.nn.functional.lp_pool1d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17826, c_cov=45508
+torch.nn.BatchNorm2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17826, c_cov=45508
+torch.matrix_power
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17826, c_cov=45544
+torch.t
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17826, c_cov=45563
+torch.numel
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17826, c_cov=45575
+torch.nn.MSELoss
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17826, c_cov=45609
+torch.nn.utils.rnn.pad_sequence
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17829, c_cov=45658
+torch.nn.functional.conv2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17829, c_cov=45658
+torch.fmin
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17829, c_cov=45697
+torch.nn.Softmin
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17830, c_cov=45697
+torch.nn.FractionalMaxPool2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17848, c_cov=45775
+torch.nn.Hardsigmoid
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17849, c_cov=45775
+torch.rand
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17849, c_cov=45776
+torch.nn.PairwiseDistance
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17851, c_cov=45800
+torch.sort
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17851, c_cov=45835
+torch.var_mean
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17851, c_cov=45893
+torch.nn.L1Loss
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17856, c_cov=45923
+torch.nn.functional.log_softmax
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17861, c_cov=45946
+torch.nn.ConstantPad1d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17862, c_cov=45946
+torch.nn.InstanceNorm3d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17863, c_cov=45948
+torch.nn.functional.l1_loss
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17863, c_cov=45948
+torch.repeat_interleave
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17863, c_cov=46048
+torch.atleast_2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17866, c_cov=46077
+torch.vdot
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17866, c_cov=46129
+torch.ne
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17866, c_cov=46160
+torch.nn.functional.elu_
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17866, c_cov=46161
+torch.nn.functional.triplet_margin_loss
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17866, c_cov=46161
+torch.logdet
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17866, c_cov=46207
+torch.eig
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17867, c_cov=46207
+torch.solve
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17868, c_cov=46207
+torch.symeig
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17869, c_cov=46207
+torch.block_diag
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17870, c_cov=46277
+torch.det
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17870, c_cov=46350
+torch.nn.LayerNorm
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17870, c_cov=46350
+torch.nn.AvgPool1d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17875, c_cov=46350
+torch.cosh
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17875, c_cov=46386
+torch.nn.functional.adaptive_max_pool1d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17875, c_cov=46386
+torch.nn.functional.pairwise_distance
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17875, c_cov=46386
+torch.sqrt
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17875, c_cov=46418
+torch.nn.functional.binary_cross_entropy
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17876, c_cov=46418
+torch.nn.LogSoftmax
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17877, c_cov=46418
+torch.lgamma
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17877, c_cov=46449
+torch.nn.LPPool2d
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17878, c_cov=46449
+torch.logcumsumexp
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17878, c_cov=46508
+torch.nn.functional.margin_ranking_loss
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17880, c_cov=46508
+torch.inner
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17880, c_cov=46555
+torch.abs
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17880, c_cov=46555
+torch.triangular_solve
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17880, c_cov=46637
+torch.floor
+DL framework package source is /home/dcov/miniconda3/envs/pt2.1.0-ins/lib/python3.9/site-packages/torch
+py_cov=17880, c_cov=46679
