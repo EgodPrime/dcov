@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+requires-python = ">=3.9"
+
+[project]
+name = "dcov"
+version = "0.2"
+authors = [
+  {name = "Senyi Li", email = "lisy@std.uestc.edu.cn"}
+]
+description = "A coverage tool for deep learning libraries."
+readme = "README.MD"
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+dcov = ["libdcov_info.so", "libdcov_trace.so", "libdcov_ins.so", "probe.so", "dcov_ins_server"]

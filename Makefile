@@ -32,31 +32,31 @@ check:
 
 .PHONY: libdcov_info.so
 libdcov_info.so: src/dcov_info.cxx
-	${CXX} ${CXX_FLAGS_COMMON} -lrt -pthread -fopenmp  src/dcov_info.cxx -o dcov/libdcov_info.so
+	${CXX} ${CXX_FLAGS_COMMON} -lrt -pthread -fopenmp  src/dcov_info.cxx -o src/dcov/libdcov_info.so
 
 .PHONY: libdcov_trace.so
 libdcov_trace.so: src/dcov_info.cxx src/dcov_trace.cxx
-	${CXX} ${CXX_FLAGS_COMMON} -lrt src/dcov_info.cxx src/dcov_trace.cxx -o dcov/libdcov_trace.so
+	${CXX} ${CXX_FLAGS_COMMON} -lrt src/dcov_info.cxx src/dcov_trace.cxx -o src/dcov/libdcov_trace.so
 
 .PHONY: libdcov_ins.so
 libdcov_ins.so: src/MurmurHash3.cxx src/dcov_ins.cxx
-	${CXX} ${CXX_FLAGS_COMMON} -fno-rtti -Wno-literal-suffix -I${GCC_PLUGIN_HEADERS} src/MurmurHash3.cxx src/dcov_ins.cxx -o dcov/libdcov_ins.so
+	${CXX} ${CXX_FLAGS_COMMON} -fno-rtti -Wno-literal-suffix -I${GCC_PLUGIN_HEADERS} src/MurmurHash3.cxx src/dcov_ins.cxx -o src/dcov/libdcov_ins.so
 
 .PHONY: dcov_ins_server
 dcov_ins_server: src/dcov_ins_server.cxx
-	${CXX} -std=c++17 -O3 -lrt src/dcov_ins_server.cxx -o dcov/dcov_ins_server
+	${CXX} -std=c++17 -O3 -lrt src/dcov_ins_server.cxx -o src/dcov/dcov_ins_server
 
 .PHONY: probe
 probe: src/dcov_trace.cxx src/MurmurHash3.cxx src/probe.cxx
-	${CXX} ${CXX_FLAGS_COMMON} -pthread -fopenmp -I./ -I${PYTHON_INCLUDE_DIR} src/dcov_trace.cxx src/MurmurHash3.cxx src/probe.cxx -o dcov/probe.so
+	${CXX} ${CXX_FLAGS_COMMON} -pthread -fopenmp -I./ -I${PYTHON_INCLUDE_DIR} src/dcov_trace.cxx src/MurmurHash3.cxx src/probe.cxx -o src/dcov/probe.so
 
 .PHONY: install
 install:
-	cp -f dcov/libdcov*.so /usr/lib/
+	cp -f src/dcov/libdcov*.so /usr/lib/
 
 .PHONY: clean
 clean:
-	rm -f dcov/libdcov*.so dcov/probe.so dcov/dcov_ins_server
+	rm -f src/dcov/libdcov*.so src/dcov/probe.so src/dcov/dcov_ins_server
 
 .PHONY: uninstall
 uninstall:

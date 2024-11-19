@@ -27,7 +27,7 @@ conda deactivate
 ### build
 ```bash
 # in one terminal
-../dcov_ins_server
+../src/dcov/dcov_ins_server
 # in another terminal
 conda activate tf2.11.0-ins
 # For the choices that appear in configure, type enter for all of them.
@@ -57,7 +57,7 @@ conda deactivate
 ### build
 ```bash
 # in one terminal
-../dcov_ins_server
+../src/dcov/../dcov_ins_server
 # in another terminal
 conda activate pt2.2.0-ins
 bash compile_pytorch.sh
@@ -83,7 +83,7 @@ conda deactivate
 ### build
 ```bash
 # in one terminal
-../dcov_ins_server
+../src/dcov/../dcov_ins_server
 # in another terminal
 conda activate pp2.6.1-ins
 bash compile_paddle.sh
