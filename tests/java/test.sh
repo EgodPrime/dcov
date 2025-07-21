@@ -1,0 +1,1 @@
+java -javaagent:/root/dcov/dcov/java/target/dcov-1.0-SNAPSHOT.jar -cp "/root/.m2/repository/org/ow2/asm/asm/9.2/asm-9.2.jar:/root/.m2/repository/org/ow2/asm-commons/9.2/asm-commons-9.2.jar:/root/.m2/repository/org/ow2/asm-analysis/9.2/asm-analysis-9.2.jar:/root/.m2/repository/org/ow2/asm-tree/9.2/asm-tree-9.2.jar" -jar root/dcov/tests/java/target/exampleput-1.0-SNAPSHOT.jar

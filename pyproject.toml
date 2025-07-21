@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=75.8", "Cython>=3.0.6"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dcov"
+version = "0.1.0"
+description = ""
+authors = [
+  {email = "EgodPrime@gmail.com"},
+  {name = "Senyi Li"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+
+dependencies = [
+   "fire",
+    "colorama",
+    "setuptools",
+    "Cython",
+    "qiling"
+]
+
+[project.optional-dependencies]
+dev=[
+  "black", 
+  "isort",
+  "pytest"
+]
+
+[tool.black]
+line-length = 102
+target-version = ["py312"]
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+
+[tool.setuptools]
+ext-modules = [
+  {name="dcov.python.dcov_py", sources=["dcov/c/dcov_py.cxx"], language="c++", extra-compile-args=["-std=c++17"]  }
+]
+
+[project.scripts]
+dcov_python = "dcov.scripts.dcov_pytnon:main"

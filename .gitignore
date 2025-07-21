@@ -1,0 +1,16 @@
+**/**.egg-info
+**/bitmap_op
+**/core
+**/**.so
+**/**.o
+**/test_example_c
+**/**__pycache__
+build
+.vscode
+**/java/target
+**/dcov-cc
+**/dcov-clang
+**/dcov-clang++
+**/dcov-gcc
+**/dcov-g++
+**/dcov_*.so

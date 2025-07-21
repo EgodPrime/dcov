@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]; then
+    echo "Usage: dcov_c <target_binary> [options]"
+    exit 1
+fi
+
+
+# 使用动态路径
+dcov_c $@
