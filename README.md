@@ -1,11 +1,6 @@
 
 # Coverage for Python+C Programs
 
-## Coverage support
-|Language| Line Coverage| Branch Coverage| Function Coverage| Block Coverage| Edge Coverage |
-|Python| Yes | Yes | Yes | Yes | Yes|
-|C/C++| No | No | No | No | Yes|
-|Java| No | Yes | Yes | Yes | Yes|
 
 ## Requirements
 
