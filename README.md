@@ -1,6 +1,7 @@
 
 # Coverage for Python+C+Java Programs
 
+This repository is the implementation of our paper "Lightweight Code Coverage Analysis for Deep Learning Library Fuzzing" which is accepted by [IEEE DSC 2025's workshop (VAAL)](https://dsc.pcl.ac.cn/2025/AcceptedPapers.html). 
 
 ## Requirements
 
@@ -52,9 +53,19 @@ with dcov.LoaderWrapper() as loader:
 dcov.close_bitmap_py()
 ```
 
-# Java覆盖率临时使用例子
+# C Coverage
+```bash
+# Example 1：
+./configure && make
+CC=dcov-clang CXX=dcov-clang++ ./configure && make
+# Example 2：
+cmake .. && make
+CC=dcov-clang CXX=dcov-clang++ cmake .. && make
+```
 
-> 需要安装jdk和maven
+# Java Coverage
+
+> jdk and maven is needed
 
 ```bash
 # 设置java agent路径变量
@@ -69,15 +80,4 @@ java -javaagent:$JAVA_AGENT_PATH  -jar /root/dcov/tests/java/target/exampleput-1
 # 通用用法
 DCOV_JAVA_PREFIX=<被测程序包名> \
 java -javaagent:<DcovAgent jar包路径> <options>
-```
-
-# C静态插桩
-```bash
-# 将CC和CXX分别设置为dcov-clang和dcov-clang++
-# 例子1：
-./configure && make
-CC=dcov-clang CXX=dcov-clang++ ./configure && make
-# 例子2：
-cmake .. && make
-CC=dcov-clang CXX=dcov-clang++ cmake .. && make
 ```
