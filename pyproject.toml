@@ -18,7 +18,6 @@ dependencies = [
     "colorama",
     "setuptools",
     "Cython",
-    "qiling"
 ]
 
 [project.optional-dependencies]
