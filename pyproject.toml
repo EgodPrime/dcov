@@ -1,7 +1,3 @@
-[build-system]
-requires = ["setuptools>=75.8", "Cython>=3.0.6"]
-build-backend = "setuptools.build_meta"
-
 [project]
 name = "dcov"
 version = "0.1.0"
@@ -14,10 +10,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 
 dependencies = [
-   "fire",
-    "colorama",
-    "setuptools",
-    "Cython",
+  "fire",
 ]
 
 [project.optional-dependencies]
@@ -35,10 +28,14 @@ include = '\.pyi?$'
 [tool.isort]
 profile = "black"
 
-[tool.setuptools]
-ext-modules = [
-  {name="dcov.python.dcov_py", sources=["dcov/c/dcov_py.cxx"], language="c++", extra-compile-args=["-std=c++17"]  }
-]
+[build-system]
+requires = ["maturin>=1.0,<2.0"]
+build-backend = "maturin"
+
+[tool.maturin]
+module-name = "dcov.python._core"
+python-packages = ["dcov"]
+python-source = "src"
 
 [project.scripts]
-dcov_python = "dcov.scripts.dcov_pytnon:main"
+dcov_python = "dcov.cmd.dcov_python:main"

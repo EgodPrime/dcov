@@ -1,7 +1,7 @@
 import os
 import sys
 
-from dcov import clear_bitmap_py, close_bitmap_py, count_bits_py, open_bitmap_py
+from dcov import clear_bitmap_py, close_bitmap_py, count_bitmap_py, open_bitmap_py
 from dcov.python.dcov_monitor import event_map, register_by_cov_type
 
 
@@ -37,7 +37,7 @@ def f4():
 def test_line():
     open_bitmap_py()
     clear_bitmap_py()
-    c1 = count_bits_py()
+    c1 = count_bitmap_py()
     assert c1 == 0
     register_by_cov_type("line")
     events = event_map["line"]
@@ -50,10 +50,10 @@ def test_line():
         for f in [f1, f2, f3, f4]
     ]
     f1(1)
-    c2 = count_bits_py()
+    c2 = count_bitmap_py()
     assert c2 > 0
     f4()
-    c3 = count_bits_py()
+    c3 = count_bitmap_py()
     assert c3 > c2
     close_bitmap_py()
 
@@ -61,7 +61,7 @@ def test_line():
 def test_branch():
     open_bitmap_py()
     clear_bitmap_py()
-    c1 = count_bits_py()
+    c1 = count_bitmap_py()
     assert c1 == 0
     register_by_cov_type("branch")
     events = event_map["branch"]
@@ -74,10 +74,10 @@ def test_branch():
         for f in [f1, f2, f3, f4]
     ]
     f1(1)
-    c2 = count_bits_py()
+    c2 = count_bitmap_py()
     assert c2 > 0
     f4()
-    c3 = count_bits_py()
+    c3 = count_bitmap_py()
     assert c3 > c2
     close_bitmap_py()
 
@@ -85,7 +85,7 @@ def test_branch():
 def test_function():
     open_bitmap_py()
     clear_bitmap_py()
-    c1 = count_bits_py()
+    c1 = count_bitmap_py()
     assert c1 == 0
     register_by_cov_type("function")
     events = event_map["function"]
@@ -98,10 +98,10 @@ def test_function():
         for f in [f1, f2, f3, f4]
     ]
     f1(1)
-    c2 = count_bits_py()
+    c2 = count_bitmap_py()
     assert c2 > 0
     f4()
-    c3 = count_bits_py()
+    c3 = count_bitmap_py()
     assert c3 > c2
     close_bitmap_py()
 
@@ -109,7 +109,7 @@ def test_function():
 def test_block():
     open_bitmap_py()
     clear_bitmap_py()
-    c1 = count_bits_py()
+    c1 = count_bitmap_py()
     assert c1 == 0
     register_by_cov_type("block")
     events = event_map["block"]
@@ -122,10 +122,10 @@ def test_block():
         for f in [f1, f2, f3, f4]
     ]
     f1(1)
-    c2 = count_bits_py()
+    c2 = count_bitmap_py()
     assert c2 > 0
     f4()
-    c3 = count_bits_py()
+    c3 = count_bitmap_py()
     assert c3 > c2
     close_bitmap_py()
 
@@ -133,7 +133,7 @@ def test_block():
 def test_edge():
     open_bitmap_py()
     clear_bitmap_py()
-    c1 = count_bits_py()
+    c1 = count_bitmap_py()
     assert c1 == 0
     register_by_cov_type("edge")
     events = event_map["edge"]
@@ -146,9 +146,9 @@ def test_edge():
         for f in [f1, f2, f3, f4]
     ]
     f1(1)
-    c2 = count_bits_py()
+    c2 = count_bitmap_py()
     assert c2 > 0
     f4()
-    c3 = count_bits_py()
+    c3 = count_bitmap_py()
     assert c3 > c2
     close_bitmap_py()

@@ -3,7 +3,7 @@ import os
 import sys
 from types import CodeType
 
-from dcov.python.dcov_py import get_bitmap_size, on_hit_py, on_hit_py_edge
+from dcov.python._core import get_bitmap_size, set_bit_py, add_edge_py
 
 bitmap_size = get_bitmap_size()
 
@@ -116,9 +116,9 @@ def register_by_cov_type(cov_type: str):
 
     global hit_func
     if cov_type == "edge":
-        hit_func = on_hit_py_edge
+        hit_func = add_edge_py
     else:
-        hit_func = on_hit_py
+        hit_func = set_bit_py
 
     for event, callback in zip(event_map[cov_type], callback_map[cov_type]):
         print(f"register event {event} to {callback.__name__}")

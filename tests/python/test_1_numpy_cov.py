@@ -6,22 +6,22 @@ import dcov
 from dcov import LoaderWrapper
 
 
-def test_torch_line():
-    spec = importlib.util.find_spec("torch")
-    assert spec is not None, "torch module not found"
+def test_requests_line():
+    spec = importlib.util.find_spec("numpy")
+    assert spec is not None, "numpy module not found"
     source = spec.origin
-    assert source is not None, "torch module source not found"
+    assert source is not None, "numpy module source not found"
     source = os.path.dirname(source)
-    print(f"torch source is {source}")
+    print(f"numpy source is {source}")
     dcov.open_bitmap_py()
     dcov.clear_bitmap_py()
     with LoaderWrapper("line") as lw:
         lw.add_source(source)
-        target = importlib.import_module("torch")
+        target = importlib.import_module("numpy")
         print(target.__version__)
-        a = target.abs(target.Tensor([-2]))
+        a = target.abs(target.array([-2]))
         assert a == 2, "abs function not working as expected"
 
-    cov = dcov.count_bits_py()
+    cov = dcov.count_bitmap_py()
     dcov.clear_bitmap_py()
     assert cov > 0
