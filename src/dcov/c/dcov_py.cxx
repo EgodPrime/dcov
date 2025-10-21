@@ -251,29 +251,6 @@ static PyObject * merge_bitmap(PyObject *self, PyObject *args){
     return NULL;
 }
 
-static PyObject* count_aflpp_bytes(PyObject* self, PyObject* args) {
-    uint32_t afl_bytemap_size;
-    int aflpp_bytemap_key;
-    
-    if (!PyArg_ParseTuple(args, "ii", &afl_bytemap_size, &aflpp_bytemap_key)) {
-        return NULL;
-    }
-
-    
-    int shmid_aflpp = shmget(aflpp_bytemap_key, afl_bytemap_size, 0666);
-    uint8_t* data_aflpp = (unsigned char*)shmat(shmid_aflpp, NULL, 0);
-
-    uint32_t  ret = 0;
-
-    #pragma omp parallel for
-    for (size_t i = 0; i < afl_bytemap_size; i++) {
-      if(data_aflpp[i]){
-        ret++;
-      }
-    }
-    shmdt(data_aflpp);
-    return PyLong_FromLong(ret);
-}
 
 static PyMethodDef DcovInfoMethods[] = {
     {"get_bitmap_size",  get_bitmap_size, METH_VARARGS,
@@ -318,8 +295,6 @@ static PyMethodDef DcovInfoMethods[] = {
         "Copy the bitmap from ori to dst"},
     {"merge_bitmap", merge_bitmap, METH_VARARGS,
         "Merge the bitmap from ori to dst"},
-    {"count_aflpp_bytes", count_aflpp_bytes, METH_VARARGS,
-        "Get the number of bytes in the bitmap of specified key"},
     {NULL, NULL, 0, NULL}        /* Sentinel */
 };
 
