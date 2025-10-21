@@ -3,34 +3,17 @@
 
 This repository is the implementation of our paper "Lightweight Code Coverage Analysis for Deep Learning Library Fuzzing" which is accepted by [IEEE DSC 2025's workshop (VAAL)](https://dsc.pcl.ac.cn/2025/AcceptedPapers.html). 
 
+This is the pure Python version.
+
 ## Requirements
 
-You need `make`, `clang` to build the C code in dcov, and `miniconda` to create a virtual python environment.
-
-Here below is the steps to install the requirements:
-
-```bash
-# suppose you are the root user in docker container
-apt-get install build-essential
-apt-get install clang # must be newer than 14
-```
+- rust: https://rust-lang.org/tools/install/
 
 ## Installation
 
 ```bash
 # Python
-CXX=clang++ pip install . 
-# C/C++
-make install -C dcov/c
-# Java
-make -C dcov/java
-make install -C dcov/java
-```
-## Uninstallation
-
-```bash
-make uninstall -C dcov/c
-make uninstall -C dcov/java
+pip install . 
 ```
 
 ## Python Usage
@@ -51,33 +34,4 @@ with dcov.LoaderWrapper() as loader:
     dcov.clear_bitmap_py()        
 
 dcov.close_bitmap_py()
-```
-
-# C Coverage
-```bash
-# Example 1：
-./configure && make
-CC=dcov-clang CXX=dcov-clang++ ./configure && make
-# Example 2：
-cmake .. && make
-CC=dcov-clang CXX=dcov-clang++ cmake .. && make
-```
-
-# Java Coverage
-
-> jdk and maven is needed
-
-```bash
-# 设置java agent路径变量
-export JAVA_AGENT_PATH="/root/.m2/repository/com/kb310/dcov/1.0-SNAPSHOT/dcov-1.0-SNAPSHOT-jar-with-dependencies.jar"
-# 生成java测试用put
-cd tests/java
-mvn package
-# 以docker容器环境为例的执行路径如下（dcov位于/root/下）
-DCOV_JAVA_PREFIX=com/kb310/exampleput \
-java -javaagent:$JAVA_AGENT_PATH  -jar /root/dcov/tests/java/target/exampleput-1.0-SNAPSHOT.jar
-
-# 通用用法
-DCOV_JAVA_PREFIX=<被测程序包名> \
-java -javaagent:<DcovAgent jar包路径> <options>
 ```
