@@ -3,8 +3,10 @@ import sys
 from importlib import machinery
 from importlib.abc import Loader, MetaPathFinder
 from importlib.machinery import SourceFileLoader
+from importlib.util import find_spec
 from pathlib import Path
 from types import CodeType, FunctionType
+from typing import Optional
 
 from dcov.python.dcov_monitor import event_map, register_by_cov_type
 
@@ -80,10 +82,16 @@ class DcovMetaPathFinder(MetaPathFinder):
 
 
 class LoaderWrapper:
-    def __init__(self, cov_type="line"):
+    def __init__(self, library_name:Optional[str]=None, cov_type="line"):
         self.class_name = cov_type
         register_by_cov_type(cov_type)
         self.mpf = DcovMetaPathFinder(cov_type)
+
+        if library_name is not None:
+            spec = find_spec(library_name)
+            if spec is None or spec.origin is None:
+                raise ImportError(f"Cannot find library {library_name}")
+            self.add_source(spec.origin)
 
     def __enter__(self):
         sys.meta_path.insert(0, self.mpf)
