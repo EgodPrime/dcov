@@ -112,3 +112,9 @@ class LoaderWrapper:
             source = source.parent
         print(f"DCOV: Adding {source} to sources")
         self.mpf.sources.append(source.resolve())
+
+    def add_library(self, library_name: str):
+        spec = find_spec(library_name)
+        if spec is None or spec.origin is None:
+            raise ImportError(f"Cannot find library {library_name}")
+        self.add_source(spec.origin)

@@ -5,30 +5,40 @@ from types import CodeType
 
 from dcov.python._core import get_bitmap_size, set_bit_py, add_edge_py
 
-bitmap_size = get_bitmap_size()
-
-FNV_OFFSET_BASIS = 216613626
-FNV_PRIME = 16777219
-
+bitmap_size = get_bitmap_size() # 1<<20
 
 def strhash(s: str):
     ho = hashlib.sha256(s.encode("utf-8"))
-    return int(ho.hexdigest(), 16)
+    return int.from_bytes(ho.digest(), "little")
 
+def _sha256_of_parts(*parts: bytes) -> int:
+    h = hashlib.sha256()
+    for p in parts:
+        h.update(p)
+        h.update(b"\x00")  # 定界符，避免拼接歧义
+    return int.from_bytes(h.digest(), "little")
 
 def hash_si(s1: str, i1: int) -> int:
-    h = FNV_OFFSET_BASIS ^ strhash(s1) * FNV_PRIME ^ i1
-    return h % bitmap_size
+    h = _sha256_of_parts(s1.encode("utf-8"), i1.to_bytes(4, "little", signed=True))
+    return h & (bitmap_size - 1)
 
 
 def hash_sii(s1: str, i1: int, i2: int) -> int:
-    h = FNV_OFFSET_BASIS ^ strhash(s1) * FNV_PRIME ^ i1 * FNV_PRIME ^ i2
-    return h % bitmap_size
+    h = _sha256_of_parts(
+        s1.encode("utf-8"),
+        i1.to_bytes(4, "little", signed=True),
+        i2.to_bytes(4, "little", signed=True),
+    )
+    return h & (bitmap_size - 1)
 
 
 def hash_sis(s1: str, i1: int, s2: str) -> int:
-    h = FNV_OFFSET_BASIS ^ strhash(s1) * FNV_PRIME ^ i1 * FNV_PRIME ^ strhash(s2)
-    return h % bitmap_size
+    h = _sha256_of_parts(
+        s1.encode("utf-8"),
+        i1.to_bytes(4, "little", signed=True),
+        s2.encode("utf-8"),
+    )
+    return h & (bitmap_size - 1)
 
 
 def line_callback(code: CodeType, line_number: int):
