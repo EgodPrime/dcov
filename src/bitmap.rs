@@ -5,38 +5,9 @@ use ahash::AHasher;
 use std::{hash::Hasher, ptr};
 use libc::{shmat, shmctl, shmdt, shmget, IPC_CREAT, IPC_RMID};
 
-const BITMAP_SIZE: u32 = 1 << 20;
-const BYTEMAP_SIZE: usize = (BITMAP_SIZE >> 3) as usize;
-const SHM_KEY_PY: i32 = 4399;
-
-static mut SHMID: i32 = -1;
-static mut M_DATA_PY: *mut u8 = ptr::null_mut();
-static mut PREVIOUS_INDEX_PY: u32 = 0xABCD1234;
-
-
-#[inline]
-fn count_bits(m_data: *const u8) -> u32 {
-    let slice: &[u8];
-    unsafe {
-        slice = std::slice::from_raw_parts(m_data, BYTEMAP_SIZE);
-    }
-    slice.par_iter().map(|&byte| {
-        let mut c = byte;
-        c = ( c & 0x55 ) + ( (c >> 1)  & 0x55 ) ;
-        c = ( c & 0x33 ) + ( (c >> 2)  & 0x33 ) ;
-        c = ( c & 0x0f ) + ( (c >> 4)  & 0x0f ) ;
-        c as u32
-    }).sum()
-}
-
-#[inline]
-unsafe fn set_bit(m_data: *mut u8, index: u32) {
-    let byte_index = (index >> 3) as isize;
-    let bit_offset = index & 0x07;
-    let byte_ptr = m_data.offset(byte_index);
-    let byte = ptr::read(byte_ptr);
-    ptr::write(byte_ptr, byte | (1 << bit_offset));
-}
+const BITMAP_SIZE_DEFAULT: usize = 1 << 20;
+const BYTEMAP_SIZE_DEFAULT: usize = BITMAP_SIZE_DEFAULT >> 3;
+const PREVIOUS_INDEX_DEFAULT: u32 = 0xABCD1234;
 
 #[inline]
 fn hash_edge(src: u32, dst: u32) -> u32 {
@@ -47,87 +18,154 @@ fn hash_edge(src: u32, dst: u32) -> u32 {
     let mut hasher = AHasher::default();
     hasher.write_u32(src);
     hasher.write_u32(dst);
-    (hasher.finish() as u32) % BITMAP_SIZE
+    (hasher.finish() as u32) % BITMAP_SIZE_DEFAULT as u32
 }
 
-#[pyfunction]
-pub unsafe fn open_bitmap_py() -> PyResult<i32> {
-    SHMID = shmget(SHM_KEY_PY, BYTEMAP_SIZE, IPC_CREAT | 0o666);
-    if SHMID < 0 {
-        return Err(pyo3::exceptions::PyRuntimeError::new_err(format!("shmget failed of key {}", SHM_KEY_PY)));
-    }
-    M_DATA_PY = shmat(SHMID, ptr::null(), 0) as *mut u8;
-    if M_DATA_PY == ptr::null_mut() {
-        return Err(pyo3::exceptions::PyRuntimeError::new_err(format!("shmat failed of key {}, id {}", SHM_KEY_PY, SHMID)));
-    }
-    Ok(SHMID)
+#[pyclass]
+pub struct BitmapManager {
+    bitmap_size: usize,
+    shm_key: i32,
+    m_data: Vec<u8>,
+    previous_index: u32,
 }
 
-#[pyfunction]
-pub unsafe fn close_bitmap_py() -> PyResult<()> {
-    if M_DATA_PY != ptr::null_mut() {
-        if shmdt(M_DATA_PY as *const _) < 0 {
-            return Err(pyo3::exceptions::PyRuntimeError::new_err(format!("shmdt failed of id {}", SHMID)));
+#[pymethods]
+impl BitmapManager {
+    #[new]
+    pub fn new(shm_key: i32) -> Self {
+        let mut t = BitmapManager {
+            shm_key,
+            bitmap_size: BITMAP_SIZE_DEFAULT,
+            m_data: vec![0; BYTEMAP_SIZE_DEFAULT],
+            previous_index: PREVIOUS_INDEX_DEFAULT,
+        };
+        t.read().unwrap_or(());
+        t
+    }
+
+    #[getter]
+    pub fn bitmap_size(&self) -> PyResult<usize> {
+        Ok(self.bitmap_size)
+    }
+
+    pub fn clear_bitmap(&mut self) -> PyResult<()> {
+        self.m_data.fill(0);
+        Ok(())
+    }
+
+    pub fn close_bitmap(&mut self) -> PyResult<()> {
+        unsafe {
+            let shmid = shmget(self.shm_key, self.bitmap_size >> 3, 0o666);
+            if shmid < 0 {
+                return Err(pyo3::exceptions::PyRuntimeError::new_err(format!("shmget failed of key {}", self.shm_key)));
+            }
+            if shmctl(shmid, IPC_RMID, ptr::null_mut()) < 0 {
+                return Err(pyo3::exceptions::PyRuntimeError::new_err(format!("shmctl(IPC_RMID) failed of key {}, id {}", self.shm_key, shmid)));
+            }
         }
-        M_DATA_PY = ptr::null_mut();
+        self.m_data.clear();
+        self.previous_index = PREVIOUS_INDEX_DEFAULT;
+        Ok(())
     }
-    if shmctl(SHMID, IPC_RMID, ptr::null_mut()) < 0 {
-        return Err(pyo3::exceptions::PyRuntimeError::new_err(format!("shmctl({}, IPC_RMID, 0) failed.", SHMID)));
-    }
-    Ok(())
-}
 
-#[pyfunction]
-pub unsafe fn clear_bitmap_py() -> PyResult<()> {
-    if M_DATA_PY != ptr::null_mut() {
-        ptr::write_bytes(M_DATA_PY, 0, BYTEMAP_SIZE);
+    pub fn count_bitmap(&self) -> PyResult<u32> {
+        let slice = &self.m_data;
+        let count = slice.par_iter().map(|&byte| {
+            let mut c = byte;
+            c = ( c & 0x55 ) + ( (c >> 1)  & 0x55 ) ;
+            c = ( c & 0x33 ) + ( (c >> 2)  & 0x33 ) ;
+            c = ( c & 0x0f ) + ( (c >> 4)  & 0x0f ) ;
+            c as u32
+        }).sum();
+        Ok(count)
     }
-    Ok(())
-}
 
-#[pyfunction]
-pub unsafe fn count_bitmap_py() -> PyResult<u32> {
-    if M_DATA_PY == ptr::null_mut() {
-        return Err(pyo3::exceptions::PyRuntimeError::new_err("bitmap not opened."));
-    }
-    let count = count_bits(M_DATA_PY as *const u8);
-    Ok(count)
-}
 
-#[pyfunction]
-pub unsafe fn set_bit_py(index: u32) -> PyResult<()> {
-    if M_DATA_PY == ptr::null_mut() {
-        return Err(pyo3::exceptions::PyRuntimeError::new_err("bitmap not opened."));
+    pub fn set_bit(&mut self, index: u32) -> PyResult<()> {
+        if index >= self.bitmap_size as u32{
+            return Err(pyo3::exceptions::PyValueError::new_err(format!("index {} out of range.", index)));
+        }
+        let byte_index = (index >> 3) as usize;
+        let bit_offset = (index & 0x07) as usize;
+        self.m_data[byte_index] |= 1 << bit_offset;
+        Ok(())
     }
-    if index >= BITMAP_SIZE {
-        return Err(pyo3::exceptions::PyValueError::new_err(format!("index {} out of range.", index)));
-    }
-    set_bit(M_DATA_PY, index);
-    Ok(())
-}
 
-#[pyfunction]
-pub unsafe fn add_edge_py(index: u32) -> PyResult<()> {
-    if M_DATA_PY == ptr::null_mut() {
-        return Err(pyo3::exceptions::PyRuntimeError::new_err("bitmap not opened."));
+    pub fn add_edge(&mut self, index: u32) -> PyResult<()> {
+        if index >= self.bitmap_size as u32{
+            return Err(pyo3::exceptions::PyValueError::new_err(format!("index {} out of range.", index)));
+        }
+        let edge_idx = hash_edge(self.previous_index, index);
+        self.set_bit(edge_idx)?;
+        self.previous_index = index;
+        Ok(())
     }
-    if index >= BITMAP_SIZE {
-        return Err(pyo3::exceptions::PyValueError::new_err(format!("index {} out of range.", index)));
-    }
-    let edge_idx = hash_edge(PREVIOUS_INDEX_PY, index);
-    set_bit(M_DATA_PY, edge_idx);
-    PREVIOUS_INDEX_PY = index;
-    Ok(())
-}
-   
-#[pyfunction]
-pub fn get_bytemap_size() -> PyResult<usize> {
-    Ok(BYTEMAP_SIZE)
-}
 
-#[pyfunction]
-pub fn get_bitmap_size() -> PyResult<u32> {
-    Ok(BITMAP_SIZE)
+    pub fn sync_from(&mut self, shm_key: i32) -> PyResult<()> {
+        unsafe {
+            let shmid_from = shmget(shm_key, self.bitmap_size >> 3, IPC_CREAT | 0o666);
+            if shmid_from < 0 {
+                return Err(pyo3::exceptions::PyRuntimeError::new_err(format!("shmget failed of key {}", shm_key)));
+            }
+            let m_data_from = shmat(shmid_from, ptr::null(), 0) as *mut u8;
+            if m_data_from == ptr::null_mut() {
+                return Err(pyo3::exceptions::PyRuntimeError::new_err(format!("shmat failed of key {}, id {}", shm_key, shmid_from)));
+            }
+            ptr::copy_nonoverlapping(m_data_from, self.m_data.as_mut_ptr(), self.bitmap_size >> 3);
+            shmdt(m_data_from as *mut _);
+        }
+        Ok(())
+    }
+
+    pub fn sync_to(&self, shm_key: i32) -> PyResult<()> {
+        unsafe {
+            let shmid_to = shmget(shm_key, self.bitmap_size >> 3, IPC_CREAT | 0o666);
+            if shmid_to < 0 {
+                return Err(pyo3::exceptions::PyRuntimeError::new_err(format!("shmget failed of key {}", shm_key)));
+            }
+            let m_data_to = shmat(shmid_to, ptr::null(), 0) as *mut u8;
+            if m_data_to == ptr::null_mut() {
+                return Err(pyo3::exceptions::PyRuntimeError::new_err(format!("shmat failed of key {}, id {}", shm_key, shmid_to)));
+            }
+            ptr::copy_nonoverlapping(self.m_data.as_ptr(), m_data_to, self.bitmap_size >> 3);
+            shmdt(m_data_to as *mut _);
+        }
+        Ok(())
+    }
+
+    pub fn read(&mut self) -> PyResult<()> {
+        self.sync_from(self.shm_key)
+    }
+
+    pub fn write(&self) -> PyResult<()> {
+        self.sync_to(self.shm_key)
+    }
+
+    pub fn merge_from(&mut self, shm_key: i32) -> PyResult<()> {
+        unsafe {
+            let shmid_src = shmget(shm_key, self.bitmap_size >> 3, 0o666);
+            if shmid_src < 0 {
+                return Err(pyo3::exceptions::PyRuntimeError::new_err(format!("shmget failed of key {}", shm_key)));
+            }
+            let m_data_src = shmat(shmid_src, ptr::null(), 0) as *mut u8;
+            if m_data_src == ptr::null_mut() {
+                return Err(pyo3::exceptions::PyRuntimeError::new_err(format!("shmat failed of key {}, id {}", shm_key, shmid_src)));
+            }
+
+            let slice_src = std::slice::from_raw_parts(m_data_src, self.bitmap_size >> 3);
+            let slice_dest = &mut self.m_data;
+
+            // 并行合并
+            slice_dest.par_iter_mut().enumerate().for_each(|(i, byte_dest)| {
+                let byte_src = slice_src[i];
+                *byte_dest |= byte_src;
+            });
+
+            shmdt(m_data_src as *mut _);
+        }
+        Ok(())
+    }
+
 }
 
 #[cfg(test)]
@@ -140,35 +178,5 @@ mod tests {
         let h1 = hash_edge(1, 2);
         let h2 = hash_edge(2, 1);
         assert_ne!(h1, h2);
-    }
-
-    #[test]
-    fn test_count_bits() {
-        // BYTEMAP_SIZE length
-        let mut bitmap: Vec<u8> = vec![0; BYTEMAP_SIZE];
-        let count = count_bits(bitmap.as_ptr());
-        assert_eq!(count, 0);
-        // set some bits
-        bitmap[0] = 0b10101010; // 4 bits
-        bitmap[1] = 0b11110000; // 4 bits
-        let count = count_bits(bitmap.as_ptr());
-        assert_eq!(count, 8);
-    }
-
-    #[test]
-    fn test_set_bit() {
-        let mut bitmap: Vec<u8> = vec![0; BYTEMAP_SIZE];
-        unsafe {
-            set_bit(bitmap.as_mut_ptr(), 0);
-            assert_eq!(bitmap[0], 0b00000001);
-            set_bit(bitmap.as_mut_ptr(), 7);
-            assert_eq!(bitmap[0], 0b10000001);
-            set_bit(bitmap.as_mut_ptr(), 8);
-            assert_eq!(bitmap[1], 0b00000001);
-            set_bit(bitmap.as_mut_ptr(), 15);
-            assert_eq!(bitmap[1], 0b10000001);
-            set_bit(bitmap.as_mut_ptr(), (BYTEMAP_SIZE+7) as u32  );
-            assert_eq!(bitmap[BYTEMAP_SIZE -1], 0b00000000);
-        }
     }
 }

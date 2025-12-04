@@ -1,4 +1,3 @@
-import os
 import sys
 from importlib import machinery
 from importlib.abc import Loader, MetaPathFinder
@@ -8,11 +7,12 @@ from pathlib import Path
 from types import CodeType, FunctionType
 from typing import Optional
 
+from dcov.python._core import BitmapManager
 from dcov.python.dcov_monitor import event_map, register_by_cov_type
 
 
 def instrument_code(co: CodeType, events):
-   # print(f"Instrumenting on:{co.co_name}--from--{co.co_filename}")
+    # print(f"Instrumenting on:{co.co_name}--from--{co.co_filename}")
     # print(f"Instrumenting code: {co.co_filename}-{co.co_firstlineno}")
     if isinstance(co, FunctionType):
         co = co.__code__
@@ -82,9 +82,13 @@ class DcovMetaPathFinder(MetaPathFinder):
 
 
 class LoaderWrapper:
-    def __init__(self, library_name:Optional[str]=None, cov_type="line"):
+    def __init__(self, bm: BitmapManager, cov_type="line", library_name: Optional[str] = None):
         self.class_name = cov_type
-        register_by_cov_type(cov_type)
+        if cov_type == "edge":
+            hit_func = bm.add_edge
+        else:
+            hit_func = bm.set_bit
+        register_by_cov_type(cov_type, hit_func, bm.bitmap_size)
         self.mpf = DcovMetaPathFinder(cov_type)
 
         if library_name is not None:

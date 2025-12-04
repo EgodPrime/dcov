@@ -1,33 +1,28 @@
-import importlib
-import importlib.util
-import sys
-
 import fire
 
 import dcov
 
-def __main(lib_name: str, tc_path: str):
-    spec = importlib.util.find_spec(lib_name)
-    if spec is None:
-        print(f"Library {lib_name} not found.", file=sys.__stderr__)
-        return
-    origin = spec.origin
-    if origin is None:
-        print(f"Library {lib_name} does not have an origin.", file=sys.__stderr__)
-        return
 
-    dcov.open_bitmap_py()
-    dcov.clear_bitmap_py()
+def __main(lib_name: str, tc_path: str, cov_type: str = "line"):
+    """
+    Run the given test case file with coverage instrumentation for the specified library and coverage type.
 
+    Args:
+        lib_name (str): The name of the library to instrument.
+        tc_path (str): The path to the test case file to execute.
+        cov_type (str, optional): The type of coverage to collect ("line", "branch", "function", "block", "edge".). Defaults to "line".
+    """
+    bm = dcov.BitmapManager(4399)
     code = open(tc_path, "r").read()
-    with dcov.LoaderWrapper() as lw:
-        lw.add_source(origin)
+    with dcov.LoaderWrapper(bm, cov_type, lib_name) as lw:
         exec(code)
 
-    print(f"Python line coverage of {tc_path} is {dcov.count_bitmap_py()}")
+    print(f"Python line coverage of {tc_path} is {bm.count_bitmap()}")
+
 
 def main():
     fire.Fire(__main)
+
 
 if __name__ == "__main__":
     main()
