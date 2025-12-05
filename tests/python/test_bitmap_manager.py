@@ -69,6 +69,7 @@ def test_count_bitmap_s():
     bm_parent.clear_bitmap()
 
     import multiprocessing
+
     def worker():
         bm_child = BitmapManager(2501)
         bm_child.set_bit(30)
@@ -82,7 +83,8 @@ def test_count_bitmap_s():
     assert count == 1  # 30
     bm_parent.close_bitmap()
 
-def test_subprocess_sync_from_parent_multiprocessing():
+
+def test_subprocess_read_multiprocessing():
     bm_parent = BitmapManager(3001)
     bm_parent.clear_bitmap()
     bm_parent.set_bit(5)
@@ -107,7 +109,7 @@ def test_subprocess_sync_from_parent_multiprocessing():
     bm_parent.close_bitmap()
 
 
-def test_subprocess_sync_from_parent_multiprocessing_no_pass():
+def test_subprocess_read_multiprocessing_no_pass():
     bm_parent = BitmapManager(4001)
     bm_parent.clear_bitmap()
     bm_parent.set_bit(17)
@@ -130,7 +132,7 @@ def test_subprocess_sync_from_parent_multiprocessing_no_pass():
     bm_parent.close_bitmap()
 
 
-def test_subprocess_sync_from_parent_subprocess():
+def test_subprocess_read_subprocess():
     bm_parent = BitmapManager(5001)
     bm_parent.clear_bitmap()
     bm_parent.set_bit(25)
@@ -154,6 +156,48 @@ def test_subprocess_sync_from_parent_subprocess():
     count = bm_parent.count_bitmap()
     assert count == 2  # 25,26
     bm_parent.close_bitmap()
+
+
+def test_sync_from_normal():
+    bm_main = BitmapManager(5501)
+    bm_main.clear_bitmap()
+
+    bm_sub = BitmapManager(5502)
+    bm_sub.clear_bitmap()
+    bm_sub.set_bit(40)
+    bm_sub.write()
+
+    bm_main.sync_from(5502)
+
+    count = bm_main.count_bitmap()
+    assert count == 1  # 40
+
+    bm_sub.close_bitmap()
+    bm_main.close_bitmap()
+
+
+def test_sync_from_multiprocessing():
+    bm_main = BitmapManager(5601)
+    bm_main.clear_bitmap()
+
+    import multiprocessing
+
+    def worker():
+        bm_sub = BitmapManager(5602)
+        bm_sub.clear_bitmap()
+        bm_sub.set_bit(41)
+        bm_sub.write()
+
+    p = multiprocessing.Process(target=worker)
+    p.start()
+    p.join()
+
+    bm_main.sync_from(5602)
+
+    count = bm_main.count_bitmap()
+    assert count == 1  # 41
+
+    bm_main.close_bitmap()
 
 
 def test_merge_from():
