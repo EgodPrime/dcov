@@ -64,6 +64,24 @@ def test_2_bitmaps():
     assert 2002 not in keys
 
 
+def test_count_bitmap_s():
+    bm_parent = BitmapManager(2501)
+    bm_parent.clear_bitmap()
+
+    import multiprocessing
+    def worker():
+        bm_child = BitmapManager(2501)
+        bm_child.set_bit(30)
+        bm_child.write()
+
+    p = multiprocessing.Process(target=worker)
+    p.start()
+    p.join()
+
+    count = bm_parent.count_bitmap_s()
+    assert count == 1  # 30
+    bm_parent.close_bitmap()
+
 def test_subprocess_sync_from_parent_multiprocessing():
     bm_parent = BitmapManager(3001)
     bm_parent.clear_bitmap()

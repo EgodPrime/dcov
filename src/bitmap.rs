@@ -80,6 +80,11 @@ impl BitmapManager {
         Ok(count)
     }
 
+    pub fn count_bitmap_s(&mut self) -> PyResult<u32> {
+        self.read()?;
+        self.count_bitmap()
+    }
+
 
     pub fn set_bit(&mut self, index: u32) -> PyResult<()> {
         if index >= self.bitmap_size as u32{
