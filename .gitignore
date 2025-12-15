@@ -15,3 +15,5 @@ build
 **/dcov-g++
 **/dcov_*.so
 target
+htmlcov
+.coverage

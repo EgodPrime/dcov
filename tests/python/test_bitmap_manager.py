@@ -1,6 +1,10 @@
 import subprocess
+import ctypes
+
+import pytest
 
 from dcov import BitmapManager
+from dcov.python import bitmap_manager
 
 
 def test_basic():
@@ -330,3 +334,147 @@ def test_merge_from_subprocess_subprocess():
     bm_7002.close_bitmap()
     bm_7003 = BitmapManager(7003)
     bm_7003.close_bitmap()
+
+
+def test_count_bitmap_time_cost():
+    import time
+
+    bm = BitmapManager(8001)
+    bm.clear_bitmap()
+    for i in range(1000):
+        bm.set_bit(i * 10)
+
+    time_data = []
+    # repeat 10 times to get average time
+    for _ in range(10):
+        start = time.time()
+        count = bm.count_bitmap()
+        end = time.time()
+        time_data.append(end - start)
+    avg_time = sum(time_data) / len(time_data)
+    print(f"Average time to count bitmap: {avg_time:.6f} seconds")
+    assert count == 1000
+    bm.close_bitmap()
+
+
+def test_count_bitmap_equivalence_random():
+    import random
+
+    bm = BitmapManager(9001)
+    bm.clear_bitmap()
+    # set some random bits across the bitmap
+    for _ in range(500):
+        bm.set_bit(random.randint(0, bm.bitmap_size - 1))
+
+    # reference (slow) implementation
+    expected = sum(bin(b).count("1") for b in bm.m_data)
+    assert bm.count_bitmap() == expected
+    bm.close_bitmap()
+
+
+def test_set_bit_and_clear_and_count():
+    bm = BitmapManager(12345)
+    # make bitmap small and resize the backing storage
+    bm.bitmap_size = 32
+    bm.m_data = bytearray(bm.bitmap_size >> 3)
+
+    try:
+        with pytest.raises(ValueError):
+            bm.set_bit(-1)
+
+        with pytest.raises(ValueError):
+            bm.set_bit(bm.bitmap_size)
+
+        bm.set_bit(5)
+        assert bm.count_bitmap() == 1
+        bm.clear_bitmap()
+        assert bm.count_bitmap() == 0
+    finally:
+        bm.close_bitmap()
+
+
+def test_mix_and_hash_edge_and_add_edge():
+    bm = BitmapManager(1)
+    try:
+        bm.bitmap_size = 128
+        bm.m_data = bytearray(bm.bitmap_size >> 3)
+
+        v = bm._mix32(0x12345678)
+        assert isinstance(v, int) and 0 <= v <= 0xFFFFFFFF
+
+        h = bm._hash_edge(1, 2)
+        assert 0 <= h < bm.bitmap_size
+
+        prev = bm.previous_index
+        bm.add_edge(3)
+        assert bm.previous_index == 3
+        # a bit was set
+        assert bm.count_bitmap() >= 1
+    finally:
+        bm.close_bitmap()
+
+def test_close_bitmap_error_shmget(monkeypatch):
+    bm = BitmapManager(13579)
+
+    def fake_shmget_fail(key, size, perms):
+        return -1
+
+    monkeypatch.setattr(bitmap_manager._libc, "shmget", fake_shmget_fail)
+    with pytest.raises(RuntimeError):
+        bm.close_bitmap()
+
+def test_close_bitmap_error_shmctl(monkeypatch):
+    bm = BitmapManager(24680)
+
+    def fake_shmctl_fail(shmid, cmd, buf):
+        return -1
+
+    monkeypatch.setattr(bitmap_manager._libc, "shmctl", fake_shmctl_fail)
+    with pytest.raises(RuntimeError):
+        bm.close_bitmap()
+
+def test_add_edge_value_error():
+    bm = BitmapManager(11223)
+    bm.bitmap_size = 64
+    bm.m_data = bytearray(bm.bitmap_size >> 3)
+
+    with pytest.raises(ValueError):
+        bm.add_edge(-1)
+
+    with pytest.raises(ValueError):
+        bm.add_edge(bm.bitmap_size)
+
+    bm.close_bitmap()
+
+def test__open_shm_error_shmget(monkeypatch):
+    bm = BitmapManager(33445)
+
+    def fake_shmget_fail(key, size, perms):
+        return -1
+
+    monkeypatch.setattr(bitmap_manager._libc, "shmget", fake_shmget_fail)
+    with pytest.raises(RuntimeError):
+        with bm._open_shm(33445):
+            pass
+
+def test__open_shm_error_shmat(monkeypatch):
+    bm = BitmapManager(55667)
+
+    def fake_shmat_fail(shmid, addr, flags):
+        return ctypes.c_void_p(-1).value
+
+    monkeypatch.setattr(bitmap_manager._libc, "shmat", fake_shmat_fail)
+    with pytest.raises(RuntimeError):
+        with bm._open_shm(55667):
+            pass
+
+def test__open_shm_error_shmdt(monkeypatch):
+    bm = BitmapManager(77889)
+
+    def fake_shmdt_fail(addr):
+        return -1
+
+    monkeypatch.setattr(bitmap_manager._libc, "shmdt", fake_shmdt_fail)
+    with pytest.raises(RuntimeError):
+        with bm._open_shm(77889):
+            pass

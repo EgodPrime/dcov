@@ -7,7 +7,7 @@ from pathlib import Path
 from types import CodeType, FunctionType
 from typing import Optional
 
-from dcov.python._core import BitmapManager
+from dcov.python.bitmap_manager import BitmapManager
 from dcov.python.dcov_monitor import event_map, register_by_cov_type
 
 
@@ -63,7 +63,9 @@ class DcovMetaPathFinder(MetaPathFinder):
                 continue
 
             # can't instrument extension files
-            if isinstance(spec.loader, (machinery.ExtensionFileLoader, machinery.BuiltinImporter)):
+            if isinstance(
+                spec.loader, (machinery.ExtensionFileLoader, machinery.BuiltinImporter)
+            ):
                 return spec
 
             filename = Path(spec.origin).resolve()
@@ -82,7 +84,9 @@ class DcovMetaPathFinder(MetaPathFinder):
 
 
 class LoaderWrapper:
-    def __init__(self, bm: BitmapManager, cov_type="line", library_name: Optional[str] = None):
+    def __init__(
+        self, bm: BitmapManager, cov_type="line", library_name: Optional[str] = None
+    ):
         self.class_name = cov_type
         if cov_type == "edge":
             hit_func = bm.add_edge

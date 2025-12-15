@@ -66,7 +66,9 @@ def jump_callback(code: CodeType, instruction_offset: int, destination_offset: i
     return sys.monitoring.DISABLE
 
 
-def exception_handle_callback(code: CodeType, instruction_offset: int, exception: BaseException):
+def exception_handle_callback(
+    code: CodeType, instruction_offset: int, exception: BaseException
+):
     # print(f"Exception {code.co_filename}:{instruction_offset} with {hash_si(code.co_filename, instruction_offset)}")
     _hit_func(hash_sii(code.co_filename, instruction_offset, hash(exception)))
     return sys.monitoring.DISABLE

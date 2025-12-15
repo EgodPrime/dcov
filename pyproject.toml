@@ -16,26 +16,28 @@ dependencies = [
 [project.optional-dependencies]
 dev=[
   "black", 
-  "isort",
+  "pytest-cov",
+  "ruff",
   "pytest"
 ]
 
+[tool.ruff]
+line-length = 88
+fix = true
+
+[tool.ruff.lint]
+select = ["F401", "F403"]
+
 [tool.black]
-line-length = 102
-target-version = ["py312"]
-include = '\.pyi?$'
+line-length = 88
+target-version = ["py313"]
 
-[tool.isort]
-profile = "black"
-
-[build-system]
-requires = ["maturin>=1.0,<2.0"]
-build-backend = "maturin"
-
-[tool.maturin]
-module-name = "dcov.python._core"
-python-packages = ["dcov"]
-python-source = "src"
+[tool.pytest.ini_options]
+addopts = "--cov=src --cov-report=html:htmlcov --cov-report=term-missing -q"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
 
 [project.scripts]
 dcov_python = "dcov.cmd.dcov_python:main"
