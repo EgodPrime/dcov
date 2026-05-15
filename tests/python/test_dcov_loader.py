@@ -187,3 +187,85 @@ def test_add_library_success(monkeypatch, tmp_path):
     lw = LoaderWrapper(BitmapManager(32))
     lw.add_library("somepkg")
     assert any(Path(str(origin)).resolve() == s for s in lw.mpf.sources)
+
+
+def test_instrument_already_loaded_module(monkeypatch, tmp_path):
+    """Test that modules already in sys.modules get instrumented via add_source.
+
+    This reproduces the real-world bug: yaml/requests are imported by
+    openai/langchain before dcov's LoaderWrapper is created.
+    """
+    fm = FakeMonitoring()
+    monkeypatch.setattr(__import__("sys"), "monitoring", fm)
+
+    import sys
+
+    # 1. Create a fake library on disk
+    lib_dir = tmp_path / "mylib"
+    lib_dir.mkdir()
+    (lib_dir / "__init__.py").write_text("def hello():\n    return 42\n")
+    (lib_dir / "sub.py").write_text("def sub_func():\n    x = 1\n    return x\n")
+
+    # 2. Pre-import the library (simulates openai importing yaml before dcov)
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("mylib", str(lib_dir / "__init__.py"))
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules["mylib"] = mod
+    spec.loader.exec_module(mod)
+
+    sub_spec = importlib.util.spec_from_file_location(
+        "mylib.sub", str(lib_dir / "sub.py")
+    )
+    sub_mod = importlib.util.module_from_spec(sub_spec)
+    sys.modules["mylib.sub"] = sub_mod
+    sub_spec.loader.exec_module(sub_mod)
+
+    # 3. Create LoaderWrapper and add the library (the new code path)
+    from dcov.python.dcov_loader import LoaderWrapper
+    from dcov import BitmapManager
+
+    bm = BitmapManager(256)
+    lw = LoaderWrapper(bm, cov_type="line")
+    lw.add_source(str(lib_dir), library_name="mylib")
+
+    # 4. Verify that code objects from already-loaded modules were instrumented
+    #    (FakeMonitoring.set_calls records each set_local_events call)
+    assert len(fm.set_calls) > 0, (
+        "Expected already-loaded modules to be instrumented, but set_local_events was never called"
+    )
+
+
+def test_instrument_already_loaded_real_coverage(monkeypatch, tmp_path):
+    """End-to-end: pre-import a module, then add it via add_library, verify coverage > 0."""
+    import sys
+
+    # 1. Create a fake library on disk with real code
+    lib_dir = tmp_path / "covlib"
+    lib_dir.mkdir()
+    (lib_dir / "__init__.py").write_text(
+        "def hello():\n    x = 1\n    y = 2\n    z = x + y\n    return z\n"
+    )
+
+    # 2. Pre-import before dcov
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location(
+        "covlib", str(lib_dir / "__init__.py")
+    )
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules["covlib"] = mod
+    spec.loader.exec_module(mod)
+
+    # 3. NOW wrap with dcov
+    from dcov.python.dcov_loader import LoaderWrapper
+    from dcov import BitmapManager
+
+    bm = BitmapManager(256)
+    bm.clear_bitmap()
+
+    with LoaderWrapper(bm, "line") as lw:
+        lw.add_library("covlib")
+        mod.hello()  # call the function
+
+    cov = bm.count_bitmap()
+    assert cov > 0, f"Expected coverage > 0 but got {cov}"
