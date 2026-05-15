@@ -11,13 +11,19 @@ from dcov.python.bitmap_manager import BitmapManager
 from dcov.python.dcov_monitor import event_map, register_by_cov_type
 
 
-def _collect_code_objects(module) -> set:
-    """Collect all live CodeType objects from an already-loaded module.
+def _collect_code_objects(module, source_path: Path) -> set:
+    """Collect top-level live CodeType objects from an already-loaded module.
 
-    Returns the actual code objects that are currently in use (from the module's
-    __dict__ and nested attributes).  These are the same objects that the
-    interpreter will execute, so instrumenting them with
-    sys.monitoring.set_local_events() has an immediate effect.
+    Returns top-level code objects (functions/classes defined directly in this
+    module's __dict__).  These are the same objects that the interpreter will
+    execute, so instrumenting them with sys.monitoring.set_local_events() has
+    an immediate effect.
+
+    Only collects top-level code objects -- instrument_code() will recurse
+    into co.co_consts, so avoiding double-recursion.
+
+    Only code objects whose co_filename is under source_path are included, so
+    that imported/dependency code is excluded.
 
     NOTE: We deliberately do NOT use loader.get_code() to recompile, because
     that produces NEW code objects equal but not identical to the originals.
@@ -26,18 +32,6 @@ def _collect_code_objects(module) -> set:
     import types
 
     collected = set()
-
-    def _walk_code(co):
-        if co in collected:
-            return
-        collected.add(co)
-        for c in co.co_consts:
-            if isinstance(c, types.CodeType):
-                _walk_code(c)
-
-    # Scan module-level attributes for code objects from the live module.
-    # This captures functions, methods, class methods, etc. that are already
-    # in sys.modules and will actually be executed.
     seen = set()
 
     def _scan_obj(obj):
@@ -45,11 +39,28 @@ def _collect_code_objects(module) -> set:
         if oid in seen:
             return
         seen.add(oid)
+
+        # Extract __code__ if present (functions, methods).
         code = getattr(obj, "__code__", None)
         if isinstance(code, types.CodeType):
-            _walk_code(code)
-        elif hasattr(obj, "__dict__"):
+            # Only collect top-level code objects -- let instrument_code
+            # handle nested ones.  Filter by co_filename to avoid
+            # instrumenting code that belongs to a different library.
+            try:
+                co_path = Path(code.co_filename).resolve()
+            except (ValueError, TypeError, OSError):
+                co_path = None
+
+            if co_path is not None and co_path.is_relative_to(source_path):
+                collected.add(code)
+
+        # Recurse into __dict__ to find nested functions/classes, but SKIP
+        # ModuleType instances found inside -- those are imported dependencies
+        # whose code objects should not be instrumented.
+        if hasattr(obj, "__dict__"):
             for v in obj.__dict__.values():
+                if isinstance(v, types.ModuleType):
+                    continue  # don't descend into dependency modules
                 _scan_obj(v)
 
     _scan_obj(module)
@@ -139,7 +150,7 @@ class LoaderWrapper:
             hit_func = bm.set_bit
         register_by_cov_type(cov_type, hit_func, bm.bitmap_size)
         self.mpf = DcovMetaPathFinder(cov_type)
-        self.library_prefix = library_name  # remember for _instrument_already_loaded
+        self.default_library_name = library_name
 
         if library_name is not None:
             spec = find_spec(library_name)
@@ -197,7 +208,7 @@ class LoaderWrapper:
 
             # This module is part of the target library and lives under the
             # source path -- instrument all its code objects.
-            codes = _collect_code_objects(mod)
+            codes = _collect_code_objects(mod, source_path)
             for co in codes:
                 instrument_code(co, events)
 
@@ -212,6 +223,10 @@ class LoaderWrapper:
 
         # If library_name is known, try to instrument already-loaded sub-modules.
         # This covers the case where the library was imported before __enter__.
+        # Fall back to the default library name set at init time.
+        if not library_name:
+            library_name = self.default_library_name or ""
+
         if library_name:
             self._instrument_already_loaded(resolved, library_name)
 
