@@ -18,7 +18,8 @@ dev=[
   "black", 
   "pytest-cov",
   "ruff",
-  "pytest"
+  "pytest",
+  "PyYAML"
 ]
 
 [tool.ruff]
