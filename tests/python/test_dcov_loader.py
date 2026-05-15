@@ -210,14 +210,14 @@ def test_instrument_already_loaded_module(monkeypatch, tmp_path):
     import importlib.util
     spec = importlib.util.spec_from_file_location("mylib", str(lib_dir / "__init__.py"))
     mod = importlib.util.module_from_spec(spec)
-    sys.modules["mylib"] = mod
+    monkeypatch.setitem(sys.modules, "mylib", mod)
     spec.loader.exec_module(mod)
 
     sub_spec = importlib.util.spec_from_file_location(
         "mylib.sub", str(lib_dir / "sub.py")
     )
     sub_mod = importlib.util.module_from_spec(sub_spec)
-    sys.modules["mylib.sub"] = sub_mod
+    monkeypatch.setitem(sys.modules, "mylib.sub", sub_mod)
     sub_spec.loader.exec_module(sub_mod)
 
     # 3. Create LoaderWrapper and add the library (the new code path)
@@ -253,7 +253,7 @@ def test_instrument_already_loaded_real_coverage(monkeypatch, tmp_path):
         "covlib", str(lib_dir / "__init__.py")
     )
     mod = importlib.util.module_from_spec(spec)
-    sys.modules["covlib"] = mod
+    monkeypatch.setitem(sys.modules, "covlib", mod)
     spec.loader.exec_module(mod)
 
     # 3. NOW wrap with dcov
